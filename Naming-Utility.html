@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naming Utility</title>
+    <style>
+        body {
+            background-color: #1a1f2b;
+            color: #ffffff;
+            font-family: monospace;
+            text-align: center;
+            margin: 0;
+            padding: 2rem;
+        }
+
+        h1 {
+            color: #4da8da;
+        }
+
+        input {
+            width: 50%;
+            height: 2.5rem;
+            font-size: 1.2rem;
+            padding: 0.5rem;
+            border: 2px solid #4da8da;
+            background: #263445;
+            color: white;
+            border-radius: 5px;
+            outline: none;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: #ffffff;
+        }
+
+        button {
+            width: 8rem;
+            height: 2.5rem;
+            margin: 0.5rem;
+            font-size: 1rem;
+            background: #4da8da;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #60c1fc;
+        }
+
+        #output {
+            margin-top: 1.5rem;
+            font-size: 1.5rem;
+            background: #263445;
+            display: inline-block;
+            padding: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #output:hover {
+            background: #4da8da;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Naming Utility</h1>
+    <input type="text" id="inputText" placeholder="Enter text here">
+    <br><br><br>
+    <button type="button" id="hyphenBtn">Hyphen</button>
+    <button type="button" id="lowercaseBtn">lowercase</button>
+    <button type="button" id="uppercaseBtn">UPPERCASE</button><br>
+    <p id="output">Click to Copy Output</p>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const inputField = document.getElementById("inputText");
+            const outputField = document.getElementById("output");
+            inputField.focus();
+
+            const formatText = (str, type) => {
+                let text = str.trim();
+                if (type === "hyphen") return text.replace(/\s+/g, '-');
+                if (type === "lowercase") return text.toLowerCase();
+                if (type === "uppercase") return text.toUpperCase();
+                return text;
+            };
+
+            document.getElementById("hyphenBtn").addEventListener("click", () => updateOutput("hyphen"));
+            document.getElementById("lowercaseBtn").addEventListener("click", () => updateOutput("lowercase"));
+            document.getElementById("uppercaseBtn").addEventListener("click", () => updateOutput("uppercase"));
+
+            function updateOutput(type) {
+                const inputText = inputField.value;
+                if (inputText === "") {
+                    outputField.textContent = "Please enter some text.";
+                    return;
+                }
+                outputField.textContent = formatText(inputText, type);
+                inputField.value = "";
+                inputField.focus();
+            }
+
+            // Copy output text on click
+            outputField.addEventListener("click", () => {
+                if (outputField.textContent === "Click to Copy Output" || outputField.textContent === "Please enter some text.") {
+                    alert("Please enter something to copy");
+                } else {
+                    navigator.clipboard.writeText(outputField.textContent);
+                    alert("Copied to clipboard: " + outputField.textContent);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

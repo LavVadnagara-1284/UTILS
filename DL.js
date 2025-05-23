@@ -1,0 +1,208 @@
+const aditPAPatientExamDetail = {
+    patientId: paPatientExamDetail.PatientId,
+    orderId: paPatientExamDetail.OrderId,
+    examId: paPatientExamDetail.ExamId,
+    providerId: paPatientExamDetail.ProviderId,
+    diabetes: paPatientExamDetail.Diabetes || false,
+    isInvoiced: paPatientExamDetail.IsInvoiced || false,
+    hasEditPermission: paPatientExamDetail.HasEditExamPermission || false,
+    telehealthFeatureAvailable: telehealthFeatureAvailable || false,
+    performOnTheFlyCalculations: performOnTheFlyCalculationsForExamOrders || false,
+    isLifeStyleQuestionEnabled: isLifeStyleQuestionEnabled || false,
+    isPriceTransparencyEnabled: isPriceTransparencyEnabled || false,
+
+    providers: paPatientExamDetail.Providers?.map(proItems => ({
+        description: proItems.Description,
+        key: proItems.Key,
+        keyValue: proItems.KeyValue
+    })) || [],
+
+    examCptCodes: paPatientExamDetail.ExamCptCodes?.map(eccItems => ({
+        description: eccItems.Description,
+        key: eccItems.Key,
+        keyValue: eccItems.KeyValue
+    })) || [],
+
+    fittingFeeCptCodes: paPatientExamDetail.FittingFeeCptCodes?.map(ffccItems => ({
+        description: ffccItems.Description,
+        key: ffccItems.Key,
+        keyValue: ffccItems.KeyValue
+    })) || [],
+
+    procedureCptCodes: paPatientExamDetail.ProcedureCptCodes?.map(pccItems => ({
+        description: pccItems.Description,
+        key: pccItems.Key,
+        keyValue: pccItems.KeyValue
+    })) || [],
+
+    pqrsCptCodes: paPatientExamDetail.PqrsCptCodes?.map(pccItems => ({
+        description: pccItems.Description,
+        key: pccItems.Key,
+        keyValue: pccItems.KeyValue
+    })) || [],
+
+    modifierCodes: paPatientExamDetail.ModifierCodes?.map(mcsItems => ({
+        description: mcsItems.Description,
+        key: mcsItems.Key,
+        keyValue: mcsItems.KeyValue,
+        keyStr: mcsItems.KeyStr
+    })) || [],
+
+    diagnosticCodes: paPatientExamDetail.DiagnosisCodes?.map(dcItems => ({
+        description: dcItems.Description,
+        key: dcItems.Key,
+        keyValue: dcItems.KeyValue
+    })) || [],
+
+    // pqrsModifierCodes: paPatientExamDetail.PqrsModifierCodes?.map(pmcItems => ({
+    //   description: pmcItems.Description,
+    //   keyValue: pmcItems.KeyValue
+    //   keyStr: pmcItems.KeyStr,
+    // })) || [],
+    // todo: ask about this
+
+    dilationReasons: paPatientExamDetail.DilationReasons || null,
+    insuranceEligibilityId: paPatientExamDetail.InsuranceEligibilityId || null,
+
+    diagnosticCodeA: paPatientExamDetail.DiagnosticCodeA || null,
+    diagnosticCodeB: paPatientExamDetail.DiagnosticCodeB || null,
+    diagnosticCodeC: paPatientExamDetail.DiagnosticCodeC || null,
+    diagnosticCodeD: paPatientExamDetail.DiagnosticCodeD || null,
+    diagnosticCodeE: paPatientExamDetail.DiagnosticCodeE || null,
+    diagnosticCodeF: paPatientExamDetail.DiagnosticCodeF || null,
+    diagnosticCodeG: paPatientExamDetail.DiagnosticCodeG || null,
+    diagnosticCodeH: paPatientExamDetail.DiagnosticCodeH || null,
+    diagnosticCodeI: paPatientExamDetail.DiagnosticCodeI || null,
+    diagnosticCodeJ: paPatientExamDetail.DiagnosticCodeJ || null,
+    diagnosticCodeK: paPatientExamDetail.DiagnosticCodeK || null,
+    diagnosticCodeL: paPatientExamDetail.DiagnosticCodeL || null,
+
+    multipleExamCptWarning: paPatientExamDetail.MultipleExamCptWarning,
+
+    selectedExamCptCode: {
+        patientExamProcedureId: paPatientExamDetail.SelectedExamCptCode?.PatientExamProcedureId || null,
+        available: paPatientExamDetail.SelectedExamCptCode?.Available || false,
+        procedureCode: paPatientExamDetail.SelectedExamCptCode?.ProcedureCode || null,
+        procedureName: paPatientExamDetail.SelectedExamCptCode?.ProcedureName || null,
+        isFittingFee: paPatientExamDetail.SelectedExamCptCode?.IsFittingFee || false,
+        isExam: paPatientExamDetail.SelectedExamCptCode?.IsExam || false,
+        diagCode1: paPatientExamDetail.SelectedExamCptCode?.DiagCode1 || null,
+        diagCode2: paPatientExamDetail.SelectedExamCptCode?.DiagCode2 || null,
+        diagCode3: paPatientExamDetail.SelectedExamCptCode?.DiagCode3 || null,
+        diagCode4: paPatientExamDetail.SelectedExamCptCode?.DiagCode4 || null,
+        diagCode5: paPatientExamDetail.SelectedExamCptCode?.DiagCode5 || null,
+        diagCode6: paPatientExamDetail.SelectedExamCptCode?.DiagCode6 || null,
+        diagCode7: paPatientExamDetail.SelectedExamCptCode?.DiagCode7 || null,
+        diagCode8: paPatientExamDetail.SelectedExamCptCode?.DiagCode8 || null,
+        diagCode9: paPatientExamDetail.SelectedExamCptCode?.DiagCode9 || null,
+        diagCode10: paPatientExamDetail.SelectedExamCptCode?.DiagCode10 || null,
+        diagCode11: paPatientExamDetail.SelectedExamCptCode?.DiagCode11 || null,
+        diagCode12: paPatientExamDetail.SelectedExamCptCode?.DiagCode12 || null,
+        itemId: paPatientExamDetail.SelectedExamCptCode?.ItemId || null,
+        price: paPatientExamDetail.SelectedExamCptCode?.Price ?? null,
+        allowZeroPrice: paPatientExamDetail.SelectedExamCptCode?.AllowZeroPrice || false,
+        priceDisplay: paPatientExamDetail.SelectedExamCptCode?.PriceDisplay || false,
+        selectedDiagnosticCodeIds: paPatientExamDetail.SelectedExamCptCode?.SelectedDiagnosticCodeIds || [],
+        selectedDiagnosticCodesDisplay: paPatientExamDetail.SelectedExamCptCode?.SelectedDiagnosticCodesDisplay || false,
+        pqrsCode: paPatientExamDetail.SelectedExamCptCode?.PqrsCode || false,
+        pqrsDescription: paPatientExamDetail.SelectedExamCptCode?.PqrsDescription || false,
+        modifier1: paPatientExamDetail.SelectedExamCptCode?.Modifier1 || false,
+        modifier2: paPatientExamDetail.SelectedExamCptCode?.Modifier2 || false,
+        modifier3: paPatientExamDetail.SelectedExamCptCode?.Modifier3 || false,
+        modifier4: paPatientExamDetail.SelectedExamCptCode?.Modifier4 || false,
+        selectedModifierCodes: paPatientExamDetail.SelectedExamCptCode?.SelectedModifierCodes || [],
+        selectedModifierCodesDisplay: paPatientExamDetail.SelectedExamCptCode?.SelectedModifierCodesDisplay || null,
+    },
+
+    selectedFittingFeeCptCode: {
+        patientExamProcedureId: paPatientExamDetail.SelectedFittingFeeCptCode?.PatientExamProcedureId || null,
+        available: paPatientExamDetail.SelectedFittingFeeCptCode?.Available || false,
+        procedureCode: paPatientExamDetail.SelectedFittingFeeCptCode?.ProcedureCode || null,
+        procedureName: paPatientExamDetail.SelectedFittingFeeCptCode?.ProcedureName || null,
+        isFittingFee: paPatientExamDetail.SelectedFittingFeeCptCode?.IsFittingFee || false,
+        isExam: paPatientExamDetail.SelectedFittingFeeCptCode?.IsExam || false,
+        diagCode1: paPatientExamDetail.SelectedFittingFeeCptCode?.DiagCode1 || null,
+        diagCode2: paPatientExamDetail.SelectedFittingFeeCptCode?.DiagCode2 || null,
+        diagCode3: paPatientExamDetail.SelectedFittingFeeCptCode?.DiagCode3 || null,
+        diagCode4: paPatientExamDetail.SelectedFittingFeeCptCode?.DiagCode4 || null,
+        diagCode5: paPatientExamDetail.SelectedFittingFeeCptCode?.DiagCode5 || null,
+        diagCode6: paPatientExamDetail.SelectedFittingFeeCptCode?.DiagCode6 || null,
+        diagCode7: paPatientExamDetail.SelectedFittingFeeCptCode?.DiagCode7 || null,
+        diagCode8: paPatientExamDetail.SelectedFittingFeeCptCode?.DiagCode8 || null,
+        diagCode9: paPatientExamDetail.SelectedFittingFeeCptCode?.DiagCode9 || null,
+        diagCode10: paPatientExamDetail.SelectedFittingFeeCptCode?.DiagCode10 || null,
+        diagCode11: paPatientExamDetail.SelectedFittingFeeCptCode?.DiagCode11 || null,
+        diagCode12: paPatientExamDetail.SelectedFittingFeeCptCode?.DiagCode12 || null,
+        itemId: paPatientExamDetail.SelectedFittingFeeCptCode?.ItemId || null,
+        price: paPatientExamDetail.SelectedFittingFeeCptCode?.Price ?? null,
+        allowZeroPrice: paPatientExamDetail.SelectedFittingFeeCptCode?.AllowZeroPrice || false,
+        priceDisplay: paPatientExamDetail.SelectedFittingFeeCptCode?.PriceDisplay || false,
+        selectedDiagnosticCodeIds: paPatientExamDetail.SelectedFittingFeeCptCode?.SelectedDiagnosticCodeIds || [],
+        selectedDiagnosticCodesDisplay: paPatientExamDetail.SelectedFittingFeeCptCode?.SelectedDiagnosticCodesDisplay || false,
+        pqrsCode: paPatientExamDetail.SelectedFittingFeeCptCode?.PqrsCode || false,
+        pqrsDescription: paPatientExamDetail.SelectedFittingFeeCptCode?.PqrsDescription || false,
+        modifier1: paPatientExamDetail.SelectedFittingFeeCptCode?.Modifier1 || false,
+        modifier2: paPatientExamDetail.SelectedFittingFeeCptCode?.Modifier2 || false,
+        modifier3: paPatientExamDetail.SelectedFittingFeeCptCode?.Modifier3 || false,
+        modifier4: paPatientExamDetail.SelectedFittingFeeCptCode?.Modifier4 || false,
+        selectedModifierCodes: paPatientExamDetail.SelectedFittingFeeCptCode?.SelectedModifierCodes || [],
+        selectedModifierCodesDisplay: paPatientExamDetail.SelectedFittingFeeCptCode?.SelectedModifierCodesDisplay || null,
+    },
+
+    selectedProcedureCptCodes: paPatientExamDetail.SelectedProcedureCptCodes || [],
+    selectedPqrsCptCodes: paPatientExamDetail.SelectedPqrsCptCodes || null,
+
+    dilation: paPatientExamDetail.Dilation || null,
+    armd: paPatientExamDetail.Armd || false,
+    diabeticRetinopathy: paPatientExamDetail.DiabeticRetinopathy || false,
+    highRiskPreDiabetes: paPatientExamDetail.HighRiskPreDiabetes || false,
+    glaucoma: paPatientExamDetail.Glaucoma || false,
+    highCholesterol: paPatientExamDetail.HighCholesterol || false,
+    hypertension: paPatientExamDetail.Hypertension || false,
+    arcus: paPatientExamDetail.Arcus || false,
+    abnormalPupil: paPatientExamDetail.AbnormalPupil || false,
+    cataract: paPatientExamDetail.Cataract || false,
+    pcp: paPatientExamDetail.Pcp || false,
+
+    employeeId: paPatientExamDetail.EmployeeId || null,
+    isEstimated: paPatientExamDetail.InsurancePricing.IsEstimated || false,
+    primaryInsurance: paPatientExamDetail.InsurancePricing.PrimaryInsurance || null,
+    secondaryInsurance: paPatientExamDetail.InsurancePricing.SecondaryInsurance || null,
+
+    itemCharges: paPatientExamDetail.InsurancePricing?.ItemCharges?.map(item => ({
+        itemId: item.ItemId,
+        itemTypeId: item.ItemTypeId,
+        itemTypeDescription: item.ItemTypeDescription,
+        itemName: item.itemName,
+        retailPrice: item.RetailPrice,
+        quantity: item.Quantity,
+        patientCopayPrimary: item.PatientCopayPrimary,
+        insuranceAllowancePrimary: item.InsuranceAllowancePrimary,
+        insuranceReceivablePrimary: item.InsuranceReceivablePrimary,
+        insuranceDiscountPrimary: item.InsuranceDiscountPrimary,
+        patientCopaySecondary: item.PatientCopaySecondary,
+        insuranceAllowanceSecondary: item.InsuranceAllowanceSecondary,
+        insuranceReceivableSecondary: item.InsuranceReceivableSecondary,
+        insuranceDiscountSecondary: item.InsuranceDiscountSecondary,
+        eligibilityIdPrimary: item.EligibilityIdPrimary,
+        eligibilityIdSecondary: item.EligibilityIdSecondary,
+        tax: item.Tax,
+        patientResponsibility: item.PatientResponsibility,
+        isExam: item.IsExam,
+        isContactLens: item.IsContactLens,
+        isCoating: item.IsCoating,
+        isFittingFee: item.IsFittingFee,
+        isProcedure: item.IsProcedure,
+        isFrame: item.IsFrame,
+        isLens: item.IsLens,
+        isLensExtra: item.IsLensExtra,
+        isMisc: item.IsMisc,
+        isCopayLine: item.IsCopayLine,
+        isGroupHeaderLine: item.IsGroupHeaderLine,
+        isTotalLine: item.IsTotalLine,
+        isForRightEye: item.IsForRightEye,
+        isForLeftEye: item.IsForLeftEye,
+        patientMemberOutOfPocketPrimary: item.PatientMemberOutOfPocketPrimary,
+        patientMemberOutOfPocketSecondary: item.PatientMemberOutOfPocketSecondary
+    })) || [],
+};
