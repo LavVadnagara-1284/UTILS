@@ -1,9 +1,9 @@
-[PatientExamDetails Table](https://app.asana.com/1/7153196700226/project/1209308814928714/task/1208605163907332?focus=true) - working on local
-[PatientExams Table](https://app.asana.com/1/7153196700226/project/1209308814928714/task/1208605163907334?focus=true) - working on local
-[OrderInsurances](https://app.asana.com/1/7153196700226/project/1209308814928714/task/1208793862997255?focus=true) - refactored and working on local
-[LabOrder_StatusList](https://app.asana.com/1/7153196700226/project/1209308814928714/task/1208793780160094?focus=true) - refactored and working on local
-[PaymentInvoice](https://app.asana.com/1/7153196700226/project/1209308814928714/task/1208772744098120?focus=true) - refactored and working on local
-[MakePaymentMiscellaneousReasons](https://app.asana.com/1/7153196700226/project/1209308814928714/task/1208783927071825?focus=true) - In process
-[EyeglassOrderDetail](https://app.asana.com/1/7153196700226/project/1209308814928714/task/1208786016901189?focus=true) - In process
-[PaymentNonInvoiced](https://app.asana.com/1/7153196700226/project/1209308814928714/task/1208772744098115?focus=true) - working on local
+[PatientExamDetails Table](https://app.asana.com/1/7153196700226/project/1209308814928714/task/1208605163907332?focus=true) - working on local\
+[PatientExams Table](https://app.asana.com/1/7153196700226/project/1209308814928714/task/1208605163907334?focus=true) - working on local\
+[OrderInsurances](https://app.asana.com/1/7153196700226/project/1209308814928714/task/1208793862997255?focus=true) - refactored and working on local\
+[LabOrder_StatusList](https://app.asana.com/1/7153196700226/project/1209308814928714/task/1208793780160094?focus=true) - refactored and working on local\
+[PaymentInvoice](https://app.asana.com/1/7153196700226/project/1209308814928714/task/1208772744098120?focus=true) - refactored and working on local\
+[MakePaymentMiscellaneousReasons](https://app.asana.com/1/7153196700226/project/1209308814928714/task/1208783927071825?focus=true) - In process\
+[EyeglassOrderDetail](https://app.asana.com/1/7153196700226/project/1209308814928714/task/1208786016901189?focus=true) - In process\
+[PaymentNonInvoiced](https://app.asana.com/1/7153196700226/project/1209308814928714/task/1208772744098115?focus=true) - working on local\
 [PaymentTransactions](https://app.asana.com/1/7153196700226/project/1209308814928714/task/1208772744098109?focus=true) - working on local
