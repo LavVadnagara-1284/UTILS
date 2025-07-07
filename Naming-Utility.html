@@ -5,118 +5,467 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Naming Utility</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4dd.png">
     <style>
+        :root {
+            --primary: #1e3a5c;
+            --primary-hover: #274472;
+            --accent: #3a7ca5;
+            --bg: #16213e;
+            --input-bg: #1e2746;
+            --text: #fff;
+            --border: 1.5px solid #274472;
+            --success: #4ade80;
+            --warning: #fbbf24;
+        }
+
         body {
-            background-color: #1a1f2b;
-            color: #ffffff;
-            font-family: monospace;
-            text-align: center;
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+            min-height: 100vh;
             margin: 0;
-            padding: 2rem;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 32rem;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+            margin-bottom: 10rem;
         }
 
         h1 {
-            color: #4da8da;
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 1rem 0 1.5rem 0;
+            letter-spacing: 0.01em;
+            text-align: center;
         }
 
-        input {
-            width: 50%;
-            height: 2.5rem;
-            font-size: 1.2rem;
-            padding: 0.5rem;
-            border: 2px solid #4da8da;
-            background: #263445;
-            color: white;
-            border-radius: 5px;
+        .input-section {
+            width: 100%;
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group {
+            position: relative;
+            width: 100%;
+        }
+
+        label {
+            display: none;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            height: 2.8rem;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            border: none;
+            background: var(--input-bg);
+            color: var(--text);
+            border-radius: 6px;
             outline: none;
             text-align: center;
-            transition: 0.3s;
+            transition: all 0.2s ease;
+            box-sizing: border-box;
         }
 
-        input:focus {
-            border-color: #ffffff;
+        input[type="text"]:focus {
+            background: #22305a;
+            box-shadow: 0 0 0 2px var(--accent);
+        }
+
+        .clear-input-btn {
+            position: absolute;
+            right: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.3rem;
+            border-radius: 3px;
+            transition: color 0.2s;
+        }
+
+        .clear-input-btn:hover {
+            color: #fff;
+        }
+
+        .btn-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            width: 100%;
         }
 
         button {
-            width: 8rem;
-            height: 2.5rem;
-            margin: 0.5rem;
-            font-size: 1rem;
-            background: #4da8da;
-            color: white;
+            min-width: 5.2rem;
+            height: 2.2rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            background: var(--accent);
+            color: #fff;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            transition: 0.3s;
+            box-shadow: none;
+            letter-spacing: 0.01em;
+            outline: none;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
         }
 
         button:hover {
-            background: #60c1fc;
+            background: var(--primary-hover);
+        }
+
+        button:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        .output-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .output-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
         }
 
         #output {
-            margin-top: 1.5rem;
-            font-size: 1.5rem;
-            background: #263445;
-            display: inline-block;
-            padding: 1rem;
-            border-radius: 5px;
+            width: 100%;
+            min-height: 2.8rem;
+            font-size: 1rem;
+            background: var(--input-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
             cursor: pointer;
-            transition: 0.3s;
+            transition: all 0.2s ease;
+            user-select: all;
+            box-shadow: none;
+            font-weight: 500;
+            word-break: break-all;
+            box-sizing: border-box;
+            border: 2px solid transparent;
         }
 
         #output:hover {
-            background: #4da8da;
+            background: #22305a;
+            border-color: var(--accent);
+        }
+
+        #output.copied {
+            background: var(--success);
+            color: #000;
+        }
+
+        .output-actions {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-secondary {
+            background: #374151;
+            min-width: 6rem;
+            height: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .btn-secondary:hover {
+            background: #4b5563;
+        }
+
+        .copy-indicator {
+            position: absolute;
+            top: -2rem;
+            right: 0;
+            background: var(--success);
+            color: #000;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .copy-indicator.show {
+            opacity: 1;
+        }
+
+        .keyboard-shortcuts {
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: #888;
+            text-align: center;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 0.5rem;
+            }
+
+            .btn-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
         }
     </style>
 </head>
 
 <body>
-    <h1>Naming Utility</h1>
-    <input type="text" id="inputText" placeholder="Enter text here">
-    <br><br><br>
-    <button type="button" id="hyphenBtn">Hyphen</button>
-    <button type="button" id="lowercaseBtn">lowercase</button>
-    <button type="button" id="uppercaseBtn">UPPERCASE</button><br>
-    <p id="output">Click to Copy Output</p>
+    <div class="container">
+        <h1>✨ Enhanced Naming Utility</h1>
+
+        <div class="input-section">
+            <form class="input-group" autocomplete="off" onsubmit="return false;">
+                <input type="text" id="inputText" placeholder="Enter text to transform..." aria-label="Input text">
+                <button type="button" class="clear-input-btn" id="clearBtn" title="Clear input"
+                    aria-label="Clear input">✕</button>
+            </form>
+        </div>
+
+        <nav class="btn-grid" id="dynamicNav" aria-label="Formatting options">
+            <!-- Buttons will be generated dynamically -->
+        </nav>
+
+        <div class="output-section">
+            <div class="output-container">
+                <div id="output" tabindex="0" aria-live="polite" title="Click to copy">Click to Copy Output</div>
+                <div class="copy-indicator" id="copyIndicator">Copied!</div>
+            </div>
+
+            <div class="output-actions">
+                <button type="button" class="btn-secondary" id="clearResultBtn" title="Clear result">Clear
+                    Result</button>
+                <button type="button" class="btn-secondary" id="copyBtn" title="Copy to clipboard">📋 Copy</button>
+            </div>
+        </div>
+
+        <div class="keyboard-shortcuts">
+            <small>💡 Tip: Press Enter to apply first transformation | Escape to clear</small>
+        </div>
+    </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const inputField = document.getElementById("inputText");
             const outputField = document.getElementById("output");
+            const btnGroup = document.getElementById("dynamicNav");
+            const clearBtn = document.getElementById("clearBtn");
+            const clearResultBtn = document.getElementById("clearResultBtn");
+            const copyBtn = document.getElementById("copyBtn");
+            const copyIndicator = document.getElementById("copyIndicator");
+
             inputField.focus();
 
-            const formatText = (str, type) => {
-                let text = str.trim();
-                if (type === "hyphen") return text.replace(/\s+/g, '-');
-                if (type === "lowercase") return text.toLowerCase();
-                if (type === "uppercase") return text.toUpperCase();
-                return text;
-            };
+            // Enhanced button configuration
+            const transformations = [
+                { type: "mockresvar", label: "Mock Variable", icon: "🔠" },
+                { type: "mockfn", label: "MockFileName", icon: "📝" },
+                { type: "hyphen", label: "kebab-case", icon: "🔗" },
+                { type: "slashtoUnderscore", label: "/ → _", icon: "🔄" },
+                { type: "hyphenToUnderscore", label: "- → _", icon: "🔄" },
+                { type: "camel", label: "camelCase", icon: "🐪" },
+                { type: "lowercase", label: "lowercase", icon: "🔤" },
+                { type: "uppercase", label: "UPPERCASE", icon: "🔠" },
+                { type: "title", label: "Title Case", icon: "📝" },
+                { type: "capitalize", label: "Capitalize", icon: "🎯" },
+                { type: "removeSpaces", label: "RemoveSpaces", icon: "🚫" },
+                { type: "reverse", label: "Reverse", icon: "🔄" },
+                // { type: "slashtoUnderscore", label: "Endpoint", icon: "🌐" }
+            ];
 
-            document.getElementById("hyphenBtn").addEventListener("click", () => updateOutput("hyphen"));
-            document.getElementById("lowercaseBtn").addEventListener("click", () => updateOutput("lowercase"));
-            document.getElementById("uppercaseBtn").addEventListener("click", () => updateOutput("uppercase"));
+            // Dynamically create buttons with icons
+            transformations.forEach(({ type, label, icon }) => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.setAttribute('data-type', type);
+                btn.innerHTML = `${icon} ${label}`;
+                btn.title = `Transform to ${label}`;
+                btnGroup.appendChild(btn);
+            });
 
-            function updateOutput(type) {
-                const inputText = inputField.value;
-                if (inputText === "") {
-                    outputField.textContent = "Please enter some text.";
-                    return;
+            function formatText(str, type) {
+                const text = str.trim();
+                if (!text) return "";
+
+                switch (type) {
+                    case "hyphen":
+                        return text.replace(/\s+/g, '-').toLowerCase();
+                    case "lowercase":
+                        return text.toLowerCase();
+                    case "uppercase":
+                        return text.toUpperCase();
+                    case "slashtoUnderscore":
+                        return text.replace(/\//g, '_').toLowerCase();
+                    case "reverse":
+                        return text.split('').reverse().join('');
+                    case "capitalize":
+                        return text.replace(/\b\w/g, c => c.toUpperCase());
+                    case "mockresvar":
+                        return text.replace(/[\/-]/g, '_').toLowerCase() + '_mock';
+                    case "title":
+                        return text.replace(/\w\S*/g, w => w.charAt(0).toUpperCase() + w.substr(1).toLowerCase());
+                    case "removeSpaces":
+                        return text.replace(/\s+/g, '');
+                    case "camel":
+                        return text
+                            .toLowerCase()
+                            .replace(/[^a-zA-Z0-9 ]/g, '')
+                            .replace(/ (.)/g, (match, group1) => group1.toUpperCase());
+                    case "mockfn":
+                        return text + '.mock.ts';
+                    case "hyphenToUnderscore":
+                        return text.replace(/-/g, '_').toLowerCase();
+                    default:
+                        return text;
                 }
-                outputField.textContent = formatText(inputText, type);
-                inputField.value = "";
-                inputField.focus();
             }
 
-            // Copy output text on click
-            outputField.addEventListener("click", () => {
-                if (outputField.textContent === "Click to Copy Output" || outputField.textContent === "Please enter some text.") {
-                    alert("Please enter something to copy");
+            function showCopyIndicator() {
+                copyIndicator.classList.add('show');
+                setTimeout(() => {
+                    copyIndicator.classList.remove('show');
+                }, 1500);
+            }
+
+            function copyToClipboard(text) {
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(text).then(() => {
+                        showCopyIndicator();
+                        outputField.classList.add('copied');
+                        setTimeout(() => {
+                            outputField.classList.remove('copied');
+                        }, 1000);
+                    });
                 } else {
-                    navigator.clipboard.writeText(outputField.textContent);
-                    alert("Copied to clipboard: " + outputField.textContent);
+                    // Fallback for older browsers
+                    const textArea = document.createElement('textarea');
+                    textArea.value = text;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    showCopyIndicator();
                 }
+            }
+
+            // Enhanced button click handler
+            btnGroup.addEventListener("click", e => {
+                if (e.target.tagName === "BUTTON") {
+                    const type = e.target.getAttribute("data-type");
+                    const inputText = inputField.value;
+
+                    if (!inputText.trim()) {
+                        outputField.textContent = "⚠️ Please enter some text first";
+                        outputField.style.color = "#fbbf24";
+                        setTimeout(() => {
+                            outputField.textContent = "Click to Copy Output";
+                            outputField.style.color = "";
+                        }, 2000);
+                        inputField.focus();
+                        return;
+                    }
+
+                    const result = formatText(inputText, type);
+                    outputField.textContent = result;
+                    outputField.style.color = "";
+
+                    // Auto-clear input after transformation
+                    setTimeout(() => {
+                        inputField.value = "";
+                        inputField.focus();
+                    }, 100);
+                }
+            });
+
+            // Enhanced copy functionality
+            function copyOutput() {
+                const text = outputField.textContent;
+                if (text === "Click to Copy Output" || text.includes("Please enter")) {
+                    // Visual feedback for invalid copy
+                    outputField.style.color = "#fbbf24";
+                    setTimeout(() => {
+                        outputField.style.color = "";
+                    }, 1000);
+                } else {
+                    copyToClipboard(text);
+                }
+            }
+
+            // Event listeners
+            outputField.addEventListener("click", copyOutput);
+            copyBtn.addEventListener("click", copyOutput);
+
+            outputField.addEventListener("keydown", e => {
+                if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    copyOutput();
+                }
+            });
+
+            // Clear button functionality
+            clearBtn.addEventListener("click", () => {
+                inputField.value = "";
+                inputField.focus();
+            });
+
+            // Clear result button functionality
+            clearResultBtn.addEventListener("click", () => {
+                outputField.textContent = "Click to Copy Output";
+                outputField.style.color = "";
+                inputField.focus();
+            });
+
+            // Keyboard shortcuts
+            document.addEventListener("keydown", e => {
+                if (e.key === "Enter" && document.activeElement === inputField) {
+                    e.preventDefault();
+                    // Apply first transformation (hyphen/kebab-case)
+                    const firstBtn = btnGroup.querySelector('button[data-type="hyphen"]');
+                    if (firstBtn) firstBtn.click();
+                }
+
+                if (e.key === "Escape") {
+                    inputField.value = "";
+                    outputField.textContent = "Click to Copy Output";
+                    outputField.style.color = "";
+                    inputField.focus();
+                }
+            });
+
+            // Show clear button only when input has content
+            inputField.addEventListener("input", () => {
+                clearBtn.style.display = inputField.value ? "block" : "none";
             });
         });
     </script>
