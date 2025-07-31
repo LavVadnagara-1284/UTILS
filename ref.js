@@ -272,13 +272,11 @@ dp_MandiBill_20210629 -> dp_MandiBill_14
 notification-alert.component.html
 notification-alert.component.ts -> getPozativeNotification
 constant.service.ts
-
 --------------------------------------------------------------------
-
 setting-locations-detail-bussiness-pages.component.ts
 
-adit-pay/listExport
 
+adit-pay_get-payment-plan-list
 */
 
 /*
