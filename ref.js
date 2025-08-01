@@ -9,17 +9,14 @@
   "Location Ids": [
     {
       "Loc_id": "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948",
-      "Loc_id_in_Demo": "2",
       "name": "Austin"
     },
     {
       "Loc_id": "22bffbc8-b255-4679-a5a9-7d2326ec2549",
-      "Loc_id_in_Demo": "3",
       "name": "Dallas"
     },
     {
       "Loc_id": "869f9155-c174-4f94-b0e1-0ee8d84f3b2d",
-      "Loc_id_in_Demo": "1",
       "name": "Houston"
     }
   ]
@@ -185,6 +182,7 @@ export const Data = {
 }
 
 /*
+=> Users
 {
   "018e6525-a501-ba0f-c381-d330864c7601": "Ruth Canal",
   "028e6525-a501-ba0f-c381-d330864c7602": "Eve Namel",
