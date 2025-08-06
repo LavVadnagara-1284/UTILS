@@ -214,6 +214,24 @@ dp_MandiBill_20210629 -> dp_MandiBill_14
 */
 
 /*
+Ruth Canal
+"8323561581"
+
+Ginger Vitis
+"1221561583"
+
+Sarah Bellum
+"2321561581"
+
+4532770987
+"4532770987"
+
+Eve Namel
+"5642356908"
+
+*/
+
+/*
 => dental patient list
 
 01dental-a123-b456-c789-d101112e1301 - Ruth Canal - ruth.canal@gmail.com
