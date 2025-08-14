@@ -23,7 +23,7 @@ git add .
 ```
 
 ```text
-git commit -m "[Fix]: Demo fix"
+git commit -m "[Fix]: Stage Demo fixes"
 ```
 
 ```text
