@@ -29,3 +29,7 @@ git commit -m "[Fix]: Stage Demo fixes"
 ```text
 git push origin stage_demo_vlav
 ```
+
+```text
+Resolved and Released on stage-demo.
+```
