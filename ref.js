@@ -634,3 +634,51 @@ export const app_data = {
   ]
 }
 */
+
+
+Request URL
+https: //betaapi.adit.com/emailcampaign/getDomainDkim
+Request Method
+POST
+
+{
+  "domain": "gmail.com",
+  "locationId": "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948",
+  "isAlreadyVerified": true,
+  "setupStart": true
+}
+
+{
+  "status": true,
+  "message": "Sucess!",
+  "error": null,
+  "data": {
+    "name": "adit.com",
+    "verificationStatus": "Success",
+    "verificationToken": "whVK4y2nv3YRAdTViDGxFsqL5wwnRCJlHoN6aQ3G1d4=",
+    "dkimList": [
+      "yrwis7e5isgpkzygzhz57cnutonac6bg",
+      "5ad3hesmobyqjexsepf3opluifeyxhy7",
+      "x2nfqcohkzepdmntbcg46sccys27ryf2"
+    ],
+    "setup_clicked": true,
+    "setup_start_time": 1755755606171,
+    "setup_expire_time": 1756014806171
+  }
+}
+
+{
+  "status": true,
+  "message": "Sucess!",
+  "error": null,
+  "data": {
+    "name": "gmail.com",
+    "verificationStatus": "Success",
+    "verificationToken": "",
+    "dkimList": [],
+    "setup_clicked": true,
+    "setup_start_time": 1755756085608,
+    "setup_expire_time": 0,
+    "isAlreadyVerified": true
+  }
+}
