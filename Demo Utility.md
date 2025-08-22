@@ -33,3 +33,5 @@ git push origin stage_demo_vlav
 ```text
 Resolved and Released on stage-demo.
 ```
+
+git commit -m "[Call Intelligence]: Demo Changes"
