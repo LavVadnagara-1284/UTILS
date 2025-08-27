@@ -1,39 +1,33 @@
 ```text
 stage_demo_vlav
 ```
-
 ```text
 v3plasmademo_1
 ```
-
 ```text
 git stash -m "stash 1"
 ```
-
 ```text
 git pull origin v3plasmademo_1
 ```
-
 ```text
 git stash apply
 ```
-
 ```text
 git add .
 ```
-
 ```text
 git commit -m "[Fix]: Stage Demo fixes"
 ```
-
+```text
+git commit -m "[Call Intelligence]: Demo Changes"
+```
 ```text
 git push origin stage_demo_vlav
 ```
-
 ```text
 Resolved and Released on stage-demo.
 ```
-
 ```text
-git commit -m "[Call Intelligence]: Demo Changes"
+qwerty
 ```
