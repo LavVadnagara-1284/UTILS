@@ -17,10 +17,16 @@ git stash apply
 git add .
 ```
 ```text
-git commit -m "[Fix]: Stage Demo fixes"
+git commit -m "[Fix_vlav]: Stage Demo fixes"
 ```
 ```text
-git commit -m "[Call Intelligence]: Demo Changes"
+[Fix_vlav]: Stage Demo fixes
+```
+```text
+[Changes_vlav]: Stage Demo Changes
+```
+```text
+[Deleted_vlav]: Removed unnecessary files
 ```
 ```text
 git push origin stage_demo_vlav
