@@ -20,15 +20,6 @@ git add .
 git commit -m "[Fix_vlav]: Stage Demo fixes"
 ```
 ```text
-[Fix_vlav]: Stage Demo fixes
-```
-```text
-[Changes_vlav]: Stage Demo Changes
-```
-```text
-[Deleted_vlav]: Removed unnecessary files
-```
-```text
 git push origin stage_demo_vlav
 ```
 ```text
@@ -36,4 +27,13 @@ Resolved and Released on stage-demo.
 ```
 ```text
 qwerty
+```
+```text
+[Fix_vlav]: Stage Demo fixes
+```
+```text
+[Changes_vlav]: Stage Demo Changes
+```
+```text
+[Deleted_vlav]: Removed unnecessary files
 ```
