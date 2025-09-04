@@ -1,184 +1,210 @@
 => For reference purpose:
 {
-  "Organization Id": {
-    "id": "a9d05186-74bd-4249-ac2b-a35f7534935a",
-      "dental": "ABC Family Dentistry",
-        "chiro": "ABC Family Chiropractic",
-          "opto": "ABC Vision"
-  },
-  "Location Ids": [
-    {
-      "Loc_id": "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948",
-      "name": "Austin"
+    "Organization Id": {
+        "id": "a9d05186-74bd-4249-ac2b-a35f7534935a",
+            "dental": "ABC Family Dentistry",
+                "chiro": "ABC Family Chiropractic",
+                    "opto": "ABC Vision"
     },
-    {
-      "Loc_id": "22bffbc8-b255-4679-a5a9-7d2326ec2549",
-      "name": "Dallas"
-    },
-    {
-      "Loc_id": "869f9155-c174-4f94-b0e1-0ee8d84f3b2d",
-      "name": "Houston"
-    }
-  ]
-}
-// --------------------------------------------------------------------
-{
-  "Organization Id": [{
-    "id": "a9d05186-74bd-4249-ac2b-a35f7534935a",
-    "name": "ABC Family Dentistry",
-  }],
     "Location Ids": [
-      {
-        "Loc_id": "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948",
-        "name": "Austin"
-      },
+        {
+            "Loc_id": "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948",
+            "name": "Austin"
+        },
+        {
+            "Loc_id": "22bffbc8-b255-4679-a5a9-7d2326ec2549",
+            "name": "Dallas"
+        },
+        {
+            "Loc_id": "869f9155-c174-4f94-b0e1-0ee8d84f3b2d",
+            "name": "Houston"
+        }
     ]
 }
 // --------------------------------------------------------------------
 {
-  "Organization Id": [{
-    "id": "a9d05186-74bd-4249-ac2b-a35f7534935a",
-    "name": "ABC Family Dentistry",
-  }],
-    "Location Ids": [
-      {
-        "Loc_id": "22bffbc8-b255-4679-a5a9-7d2326ec2549",
-        "name": "Dallas"
-      }
-    ]
+    "Organization Id": [{
+        "id": "a9d05186-74bd-4249-ac2b-a35f7534935a",
+        "name": "ABC Family Dentistry",
+    }],
+        "Location Ids": [
+            {
+                "Loc_id": "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948",
+                "name": "Austin"
+            },
+        ]
 }
 // --------------------------------------------------------------------
 {
-  "Organization Id": [{
-    "id": "a9d05186-74bd-4249-ac2b-a35f7534935a",
-    "name": "ABC Family Dentistry",
-  }],
-    "Location Ids": [
-      {
-        "Loc_id": "869f9155-c174-4f94-b0e1-0ee8d84f3b2d",
-        "name": "Houston"
-      }
-    ]
+    "Organization Id": [{
+        "id": "a9d05186-74bd-4249-ac2b-a35f7534935a",
+        "name": "ABC Family Dentistry",
+    }],
+        "Location Ids": [
+            {
+                "Loc_id": "22bffbc8-b255-4679-a5a9-7d2326ec2549",
+                "name": "Dallas"
+            }
+        ]
+}
+// --------------------------------------------------------------------
+{
+    "Organization Id": [{
+        "id": "a9d05186-74bd-4249-ac2b-a35f7534935a",
+        "name": "ABC Family Dentistry",
+    }],
+        "Location Ids": [
+            {
+                "Loc_id": "869f9155-c174-4f94-b0e1-0ee8d84f3b2d",
+                "name": "Houston"
+            }
+        ]
 }
 
+export const Mock = {
+    dental: ,
+    optometry: ,
+    chiropractic: ,
+}
+
+export const Mock = {
+    dental: {
+        all: ,
+        austin: ,
+        dallas: ,
+        houston: ,
+    },
+    optometry: {
+        all: ,
+        austin: ,
+        dallas: ,
+        houston: ,
+    },
+    chiropractic: {
+        all: ,
+        austin: ,
+        dallas: ,
+        houston: ,
+    },
+}
 
 export const Data = {
-  get: {
-    dental: {
-      all: {},
-      // austin
-      "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948": {},
-      // dallas
-      "22bffbc8-b255-4679-a5a9-7d2326ec2549": {},
-      // houston
-      "869f9155-c174-4f94-b0e1-0ee8d84f3b2d": {}
+    get: {
+        dental: {
+            all: {},
+            // austin
+            "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948": {},
+            // dallas
+            "22bffbc8-b255-4679-a5a9-7d2326ec2549": {},
+            // houston
+            "869f9155-c174-4f94-b0e1-0ee8d84f3b2d": {}
+        },
+        optometry: {
+            all: {},
+            // austin
+            "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948": {},
+            // dallas
+            "22bffbc8-b255-4679-a5a9-7d2326ec2549": {},
+            // houston
+            "869f9155-c174-4f94-b0e1-0ee8d84f3b2d": {}
+        },
+        chiropractor: {
+            all: {},
+            // austin
+            "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948": {},
+            // dallas
+            "22bffbc8-b255-4679-a5a9-7d2326ec2549": {},
+            // houston
+            "869f9155-c174-4f94-b0e1-0ee8d84f3b2d": {}
+        }
     },
-    optometry: {
-      all: {},
-      // austin
-      "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948": {},
-      // dallas
-      "22bffbc8-b255-4679-a5a9-7d2326ec2549": {},
-      // houston
-      "869f9155-c174-4f94-b0e1-0ee8d84f3b2d": {}
+    post: {
+        dental: {
+            all: {},
+            // austin
+            "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948": {},
+            // dallas
+            "22bffbc8-b255-4679-a5a9-7d2326ec2549": {},
+            // houston
+            "869f9155-c174-4f94-b0e1-0ee8d84f3b2d": {}
+        },
+        optometry: {
+            all: {},
+            // austin
+            "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948": {},
+            // dallas
+            "22bffbc8-b255-4679-a5a9-7d2326ec2549": {},
+            // houston
+            "869f9155-c174-4f94-b0e1-0ee8d84f3b2d": {}
+        },
+        chiropractor: {
+            all: {},
+            // austin
+            "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948": {},
+            // dallas
+            "22bffbc8-b255-4679-a5a9-7d2326ec2549": {},
+            // houston
+            "869f9155-c174-4f94-b0e1-0ee8d84f3b2d": {}
+        }
     },
-    chiropractor: {
-      all: {},
-      // austin
-      "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948": {},
-      // dallas
-      "22bffbc8-b255-4679-a5a9-7d2326ec2549": {},
-      // houston
-      "869f9155-c174-4f94-b0e1-0ee8d84f3b2d": {}
+    put: {
+        dental: {
+            all: {},
+            // austin
+            "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948": {},
+            // dallas
+            "22bffbc8-b255-4679-a5a9-7d2326ec2549": {},
+            // houston
+            "869f9155-c174-4f94-b0e1-0ee8d84f3b2d": {}
+        },
+        optometry: {
+            all: {},
+            // austin
+            "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948": {},
+            // dallas
+            "22bffbc8-b255-4679-a5a9-7d2326ec2549": {},
+            // houston
+            "869f9155-c174-4f94-b0e1-0ee8d84f3b2d": {}
+        },
+        chiropractor: {
+            all: {},
+            // austin
+            "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948": {},
+            // dallas
+            "22bffbc8-b255-4679-a5a9-7d2326ec2549": {},
+            // houston
+            "869f9155-c174-4f94-b0e1-0ee8d84f3b2d": {}
+        }
+    },
+    delete: {
+        dental: {
+            all: {},
+            // austin
+            "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948": {},
+            // dallas
+            "22bffbc8-b255-4679-a5a9-7d2326ec2549": {},
+            // houston
+            "869f9155-c174-4f94-b0e1-0ee8d84f3b2d": {}
+        },
+        optometry: {
+            all: {},
+            // austin
+            "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948": {},
+            // dallas
+            "22bffbc8-b255-4679-a5a9-7d2326ec2549": {},
+            // houston
+            "869f9155-c174-4f94-b0e1-0ee8d84f3b2d": {}
+        },
+        chiropractor: {
+            all: {},
+            // austin
+            "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948": {},
+            // dallas
+            "22bffbc8-b255-4679-a5a9-7d2326ec2549": {},
+            // houston
+            "869f9155-c174-4f94-b0e1-0ee8d84f3b2d": {}
+        }
     }
-  },
-  post: {
-    dental: {
-      all: {},
-      // austin
-      "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948": {},
-      // dallas
-      "22bffbc8-b255-4679-a5a9-7d2326ec2549": {},
-      // houston
-      "869f9155-c174-4f94-b0e1-0ee8d84f3b2d": {}
-    },
-    optometry: {
-      all: {},
-      // austin
-      "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948": {},
-      // dallas
-      "22bffbc8-b255-4679-a5a9-7d2326ec2549": {},
-      // houston
-      "869f9155-c174-4f94-b0e1-0ee8d84f3b2d": {}
-    },
-    chiropractor: {
-      all: {},
-      // austin
-      "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948": {},
-      // dallas
-      "22bffbc8-b255-4679-a5a9-7d2326ec2549": {},
-      // houston
-      "869f9155-c174-4f94-b0e1-0ee8d84f3b2d": {}
-    }
-  },
-  put: {
-    dental: {
-      all: {},
-      // austin
-      "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948": {},
-      // dallas
-      "22bffbc8-b255-4679-a5a9-7d2326ec2549": {},
-      // houston
-      "869f9155-c174-4f94-b0e1-0ee8d84f3b2d": {}
-    },
-    optometry: {
-      all: {},
-      // austin
-      "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948": {},
-      // dallas
-      "22bffbc8-b255-4679-a5a9-7d2326ec2549": {},
-      // houston
-      "869f9155-c174-4f94-b0e1-0ee8d84f3b2d": {}
-    },
-    chiropractor: {
-      all: {},
-      // austin
-      "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948": {},
-      // dallas
-      "22bffbc8-b255-4679-a5a9-7d2326ec2549": {},
-      // houston
-      "869f9155-c174-4f94-b0e1-0ee8d84f3b2d": {}
-    }
-  },
-  delete: {
-    dental: {
-      all: {},
-      // austin
-      "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948": {},
-      // dallas
-      "22bffbc8-b255-4679-a5a9-7d2326ec2549": {},
-      // houston
-      "869f9155-c174-4f94-b0e1-0ee8d84f3b2d": {}
-    },
-    optometry: {
-      all: {},
-      // austin
-      "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948": {},
-      // dallas
-      "22bffbc8-b255-4679-a5a9-7d2326ec2549": {},
-      // houston
-      "869f9155-c174-4f94-b0e1-0ee8d84f3b2d": {}
-    },
-    chiropractor: {
-      all: {},
-      // austin
-      "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948": {},
-      // dallas
-      "22bffbc8-b255-4679-a5a9-7d2326ec2549": {},
-      // houston
-      "869f9155-c174-4f94-b0e1-0ee8d84f3b2d": {}
-    }
-  }
 }
 
 /*
@@ -258,3 +284,5 @@ export const Data = {
 14chirop-a123-b456-c789-d101112e1314 - Timberly Neck - neck@gmail.com
 15chirop-a123-b456-c789-d101112e1315 - Tori Spinal - spinal@gmail.com
 */
+
+scheduled - list.component.ts > check the timeout changes for stage and stage - demo, once done there then remove the demo condition
