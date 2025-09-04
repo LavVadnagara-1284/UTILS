@@ -17,10 +17,7 @@ git stash apply
 git add .
 ```
 ```text
-git commit -m "[Fix]: Stage Demo fixes"
-```
-```text
-git commit -m "[Call Intelligence]: Demo Changes"
+git commit -m "[Fix_vlav]: Stage Demo fixes"
 ```
 ```text
 git push origin stage_demo_vlav
@@ -30,4 +27,13 @@ Resolved and Released on stage-demo.
 ```
 ```text
 qwerty
+```
+```text
+[Fix_vlav]: Stage Demo fixes
+```
+```text
+[Changes_vlav]: Stage Demo Changes
+```
+```text
+[Deleted_vlav]: Removed unnecessary files
 ```
