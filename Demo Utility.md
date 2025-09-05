@@ -37,3 +37,6 @@ qwerty
 ```text
 [Deleted_vlav]: Removed unnecessary files
 ```
+```text
+This is a Stage issue and will be reflected on stage-demo once it is resolved on Stage. You can verify this issue directly on Stage.
+```
