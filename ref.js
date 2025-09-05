@@ -62,29 +62,47 @@
 }
 
 export const Mock = {
-    dental: ,
-    optometry: ,
-    chiropractic: ,
+    dental: {},
+    optometry: {},
+    chiropractor: {},
 }
 
 export const Mock = {
     dental: {
-        all: ,
-        austin: ,
-        dallas: ,
-        houston: ,
+        all: {},
+        austin: {},
+        dallas: {},
+        houston: {},
     },
     optometry: {
-        all: ,
-        austin: ,
-        dallas: ,
-        houston: ,
+        all: {},
+        austin: {},
+        dallas: {},
+        houston: {},
     },
-    chiropractic: {
-        all: ,
-        austin: ,
-        dallas: ,
-        houston: ,
+    chiropractor: {
+        all: {},
+        austin: {},
+        dallas: {},
+        houston: {},
+    },
+}
+
+export const Mock = {
+    dental: {
+        austin: {},
+        dallas: {},
+        houston: {},
+    },
+    optometry: {
+        austin: {},
+        dallas: {},
+        houston: {},
+    },
+    chiropractor: {
+        austin: {},
+        dallas: {},
+        houston: {},
     },
 }
 
@@ -285,4 +303,4 @@ export const Data = {
 15chirop-a123-b456-c789-d101112e1315 - Tori Spinal - spinal@gmail.com
 */
 
-scheduled - list.component.ts > check the timeout changes for stage and stage - demo, once done there then remove the demo condition
+// scheduled-list.component.ts > check the timeout changes for stage and stage - demo, once done there then remove the demo condition
