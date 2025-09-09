@@ -487,3 +487,46 @@ export const Data = {
    return response;
  }
 */
+
+// ---------------------------------------------------------------------------------------------------------------------------------------
+
+const overdue_0_To_3_ChiroBase = {
+    austin: [],
+    dallas: [],
+    houston: [],
+}
+
+export const getPatientListByTypeNewesOverdue_0_To_3_ChiroMock = {
+    all: {
+        "status": true,
+        "message": "Patient Overdue Listing!",
+        "error": null,
+        "data": [...overdue_0_To_3_ChiroBase.austin, ...overdue_0_To_3_ChiroBase.dallas, ...overdue_0_To_3_ChiroBase.houston
+        ],
+        "totalLength": overdue_0_To_3_ChiroBase.austin.length + overdue_0_To_3_ChiroBase.dallas.length + overdue_0_To_3_ChiroBase.houston.length
+    },
+    austin: {
+        "status": true,
+        "message": "Patient Overdue Listing!",
+        "error": null,
+        "data": [...overdue_0_To_3_ChiroBase.austin
+        ],
+        "totalLength": overdue_0_To_3_ChiroBase.austin.length
+    },
+    dallas: {
+        "status": true,
+        "message": "Patient Overdue Listing!",
+        "error": null,
+        "data": [...overdue_0_To_3_ChiroBase.dallas
+        ],
+        "totalLength": overdue_0_To_3_ChiroBase.dallas.length
+    },
+    houston: {
+        "status": true,
+        "message": "Patient Overdue Listing!",
+        "error": null,
+        "data": [...overdue_0_To_3_ChiroBase.houston
+        ],
+        "totalLength": overdue_0_To_3_ChiroBase.houston.length
+    },
+}
