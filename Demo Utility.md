@@ -26,9 +26,6 @@ git push origin stage_demo_vlav
 Resolved and Released on stage-demo.
 ```
 ```text
-qwerty
-```
-```text
 [Fix_vlav]: Stage Demo fixes
 ```
 ```text
