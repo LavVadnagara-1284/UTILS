@@ -491,40 +491,40 @@ export const Data = {
 // ---------------------------------------------------------------------------------------------------------------------------------------
 
 const overdue_0_To_3_ChiroBase = {
-    austin: [],
-    dallas: [],
-    houston: [],
+  austin: [],
+  dallas: [],
+  houston: [],
 }
 
 export const getPatientListByTypeNewesOverdue_0_To_3_ChiroMock = {
-    all: {
-        "status": true,
-        "message": "Patient Overdue Listing!",
-        "error": null,
-        "data": [...overdue_0_To_3_ChiroBase.austin, ...overdue_0_To_3_ChiroBase.dallas, ...overdue_0_To_3_ChiroBase.houston],
-        "totalLength": overdue_0_To_3_ChiroBase.austin.length + overdue_0_To_3_ChiroBase.dallas.length + overdue_0_To_3_ChiroBase.houston.length
-    },
-    austin: {
-        "status": true,
-        "message": "Patient Overdue Listing!",
-        "error": null,
-        "data": [...overdue_0_To_3_ChiroBase.austin],
-        "totalLength": overdue_0_To_3_ChiroBase.austin.length
-    },
-    dallas: {
-        "status": true,
-        "message": "Patient Overdue Listing!",
-        "error": null,
-        "data": [...overdue_0_To_3_ChiroBase.dallas],
-        "totalLength": overdue_0_To_3_ChiroBase.dallas.length
-    },
-    houston: {
-        "status": true,
-        "message": "Patient Overdue Listing!",
-        "error": null,
-        "data": [...overdue_0_To_3_ChiroBase.houston],
-        "totalLength": overdue_0_To_3_ChiroBase.houston.length
-    },
+  all: {
+    "status": true,
+    "message": "Patient Overdue Listing!",
+    "error": null,
+    "data": [...overdue_0_To_3_ChiroBase.austin, ...overdue_0_To_3_ChiroBase.dallas, ...overdue_0_To_3_ChiroBase.houston],
+    "totalLength": overdue_0_To_3_ChiroBase.austin.length + overdue_0_To_3_ChiroBase.dallas.length + overdue_0_To_3_ChiroBase.houston.length
+  },
+  austin: {
+    "status": true,
+    "message": "Patient Overdue Listing!",
+    "error": null,
+    "data": [...overdue_0_To_3_ChiroBase.austin],
+    "totalLength": overdue_0_To_3_ChiroBase.austin.length
+  },
+  dallas: {
+    "status": true,
+    "message": "Patient Overdue Listing!",
+    "error": null,
+    "data": [...overdue_0_To_3_ChiroBase.dallas],
+    "totalLength": overdue_0_To_3_ChiroBase.dallas.length
+  },
+  houston: {
+    "status": true,
+    "message": "Patient Overdue Listing!",
+    "error": null,
+    "data": [...overdue_0_To_3_ChiroBase.houston],
+    "totalLength": overdue_0_To_3_ChiroBase.houston.length
+  },
 }
 
 
@@ -755,4 +755,315 @@ export const getPatientListByTypeNewesOverdue_0_To_3_ChiroMock = {
         "patientId": "06dental-a123-b456-c789-d101112e1306"
     }
 ]
+*/
+
+/*
+{
+    "PROPHY_FMX_PERIO_R_C": [
+        {
+            "ddate": new Date("03/22/23").getTime(),
+            "recall_type": "PROPHY",
+            "ehr_key": "3"
+        },
+        {
+            "ddate": new Date("10/25/21").getTime(),
+            "recall_type": "PERIO R/C",
+            "ehr_key": "2"
+        },
+        {
+            "ddate": new Date("11/03/20").getTime(),
+            "recall_type": "FMX",
+            "ehr_key": "1"
+        }
+    ],
+    "PROPHY_FMX_MEMBERSHIP": [
+        {
+            "ddate": new Date("11/24/23").getTime(),
+            "recall_type": "PROPHY",
+            "ehr_key": "3"
+        },
+        {
+            "ddate": new Date("11/17/22").getTime(),
+            "recall_type": "MEMBERSHIP",
+            "ehr_key": "2"
+        },
+        {
+            "ddate": new Date("11/16/21").getTime(),
+            "recall_type": "FMX",
+            "ehr_key": "1"
+        }
+    ],
+    "PROPHY_FMX_BITEWINGS": [
+        {
+            "ddate": new Date("06/06/23").getTime(),
+            "recall_type": "PROPHY",
+            "ehr_key": "3"
+        },
+        {
+            "ddate": new Date("10/31/19").getTime(),
+            "recall_type": "BITEWINGS",
+            "ehr_key": "2"
+        },
+        {
+            "ddate": new Date("10/25/18").getTime(),
+            "recall_type": "FMX",
+            "ehr_key": "1"
+        }
+    ],
+    "PROPHY_FMX": [
+        {
+            "ddate": new Date("10/11/22").getTime(),
+            "recall_type": "FMX",
+            "ehr_key": "2"
+        },
+        {
+            "ddate": new Date("02/14/22").getTime(),
+            "recall_type": "PROPHY",
+            "ehr_key": "1"
+        }
+    ],
+    "PROPHY_BITEWINGS_FMX": [
+        {
+            "ddate": new Date("08/16/22").getTime(),
+            "recall_type": "FMX",
+            "ehr_key": "3"
+        },
+        {
+            "ddate": new Date("08/10/21").getTime(),
+            "recall_type": "BITEWINGS",
+            "ehr_key": "2"
+        },
+        {
+            "ddate": new Date("12/08/20").getTime(),
+            "recall_type": "PROPHY",
+            "ehr_key": "1"
+        }
+    ],
+    "PROPHY_BITEWINGS": [
+        {
+            "ddate": new Date("12/25/23").getTime(),
+            "recall_type": "PROPHY",
+            "ehr_key": "2"
+        },
+        {
+            "ddate": new Date("12/21/21").getTime(),
+            "recall_type": "BITEWINGS",
+            "ehr_key": "1"
+        }
+    ],
+    "PROPHY": [
+        {
+            "ddate": new Date("03/13/24").getTime(),
+            "recall_type": "PROPHY",
+            "ehr_key": "1"
+        }
+    ],
+    "PERIO_R_C_FMX_BITEWINGS": [
+        {
+            "ddate": new Date("07/07/22").getTime(),
+            "recall_type": "BITEWINGS",
+            "ehr_key": "3"
+        },
+        {
+            "ddate": new Date("04/19/22").getTime(),
+            "recall_type": "FMX",
+            "ehr_key": "2"
+        },
+        {
+            "ddate": new Date("10/07/21").getTime(),
+            "recall_type": "PERIO R/C",
+            "ehr_key": "1"
+        }
+    ],
+    "PERIO_R_C_BITEWINGS_FMX": [
+        {
+            "ddate": new Date("03/22/24").getTime(),
+            "recall_type": "BITEWINGS",
+            "ehr_key": "3"
+        },
+        {
+            "ddate": new Date("06/22/23").getTime(),
+            "recall_type": "PERIO R/C",
+            "ehr_key": "2"
+        },
+        {
+            "ddate": new Date("10/26/21").getTime(),
+            "recall_type": "FMX",
+            "ehr_key": "1"
+        }
+    ],
+    "PERIO_R_C_BITEWINGS": [
+        {
+            "ddate": new Date("04/11/24").getTime(),
+            "recall_type": "PERIO R/C",
+            "ehr_key": "2"
+        },
+        {
+            "ddate": new Date("01/04/24").getTime(),
+            "recall_type": "BITEWINGS",
+            "ehr_key": "1"
+        }
+    ],
+    "FMX_MEMBERSHIP_PERIO_R_C": [
+        {
+            "ddate": new Date("09/15/22").getTime(),
+            "recall_type": "PERIO R/C",
+            "ehr_key": "3"
+        },
+        {
+            "ddate": new Date("09/01/22").getTime(),
+            "recall_type": "MEMBERSHIP",
+            "ehr_key": "2"
+        },
+        {
+            "ddate": new Date("12/07/21").getTime(),
+            "recall_type": "FMX",
+            "ehr_key": "1"
+        }
+    ],
+    "FMX_BITEWINGS_PERIO_R_C": [
+        {
+            "ddate": new Date("11/21/23").getTime(),
+            "recall_type": "FMX",
+            "ehr_key": "3"
+        },
+        {
+            "ddate": new Date("12/28/22").getTime(),
+            "recall_type": "PERIO R/C",
+            "ehr_key": "2"
+        },
+        {
+            "ddate": new Date("10/31/22").getTime(),
+            "recall_type": "BITEWINGS",
+            "ehr_key": "1"
+        }
+    ],
+    "BITEWINGS_PROPHY": [
+        {
+            "ddate": new Date("08/21/23").getTime(),
+            "recall_type": "BITEWINGS",
+            "ehr_key": "2"
+        },
+        {
+            "ddate": new Date("05/22/23").getTime(),
+            "recall_type": "PROPHY",
+            "ehr_key": "1"
+        }
+    ],
+    "BITEWINGS_FMX_PERIO_R_C": [
+        {
+            "ddate": new Date("07/31/23").getTime(),
+            "recall_type": "BITEWINGS",
+            "ehr_key": "3"
+        },
+        {
+            "ddate": new Date("09/21/22").getTime(),
+            "recall_type": "PERIO R/C",
+            "ehr_key": "2"
+        },
+        {
+            "ddate": new Date("04/16/22").getTime(),
+            "recall_type": "FMX",
+            "ehr_key": "1"
+        }
+    ]
+}
+
+--------------------------------------------------------------------
+
+{
+    "PROPHY_3": [
+        {
+            "ddate": new Date("09/21/22").getTime(),
+            "recall_type": "PROPHY",
+            "ehr_key": "1"
+        }
+    ],
+        "PROPHY_2_SINGLE": [
+            {
+                "ddate": new Date("12/14/23").getTime(),
+                "recall_type": "PROPHY",
+                "ehr_key": "1"
+            }
+        ],
+            "PROPHY_2": [
+                {
+                    "ddate": new Date("04/06/23").getTime(),
+                    "recall_type": "PROPHY",
+                    "ehr_key": "1"
+                }
+            ],
+                "PERIO_R_C_BITEWINGS_5": [
+                    {
+                        "ddate": new Date("01/16/23").getTime(),
+                        "recall_type": "BITEWINGS",
+                        "ehr_key": "2"
+                    },
+                    {
+                        "ddate": new Date("04/13/22").getTime(),
+                        "recall_type": "PERIO R/C",
+                        "ehr_key": "1"
+                    }
+                ],
+                    "PERIO_R_C_BITEWINGS_4": [
+                        {
+                            "ddate": new Date("02/27/23").getTime(),
+                            "recall_type": "BITEWINGS",
+                            "ehr_key": "2"
+                        },
+                        {
+                            "ddate": new Date("06/27/22").getTime(),
+                            "recall_type": "PERIO R/C",
+                            "ehr_key": "1"
+                        }
+                    ],
+                        "PERIO_R_C_BITEWINGS_3": [
+                            {
+                                "ddate": new Date("10/09/23").getTime(),
+                                "recall_type": "PERIO R/C",
+                                "ehr_key": "2"
+                            },
+                            {
+                                "ddate": new Date("06/07/23").getTime(),
+                                "recall_type": "BITEWINGS",
+                                "ehr_key": "1"
+                            }
+                        ],
+                            "PERIO_R_C_BITEWINGS_2": [
+                                {
+                                    "ddate": new Date("09/29/23").getTime(),
+                                    "recall_type": "PERIO R/C",
+                                    "ehr_key": "2"
+                                },
+                                {
+                                    "ddate": new Date("07/19/22").getTime(),
+                                    "recall_type": "BITEWINGS",
+                                    "ehr_key": "1"
+                                }
+                            ],
+                                "BITEWINGS_PROPHY_3": [
+                                    {
+                                        "ddate": new Date("01/11/24").getTime(),
+                                        "recall_type": "BITEWINGS",
+                                        "ehr_key": "2"
+                                    },
+                                    {
+                                        "ddate": new Date("07/11/23").getTime(),
+                                        "recall_type": "PROPHY",
+                                        "ehr_key": "1"
+                                    }
+                                ],
+                                    "BITEWINGS_PROPHY_2": [
+                                        {
+                                            "ddate": new Date("01/11/23").getTime(),
+                                            "recall_type": "PROPHY",
+                                            "ehr_key": "2"
+                                        },
+                                        {
+                                            "ddate": new Date("10/27/22").getTime(),
+                                            "recall_type": "BITEWINGS",
+                                            "ehr_key": "1"
+                                        }
+                                    ],
+}
 */
