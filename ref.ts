@@ -1067,3 +1067,38 @@ export const getPatientListByTypeNewesOverdue_0_To_3_ChiroMock = {
                                     ],
 }
 */
+
+
+/*
+const locationFields = {
+    austin: {
+        location: {
+            "application_name": "Eaglesoft",
+            "$id": constantLocationData.austin.id,
+            "location": { "$ref": "location", "$id": constantLocationData.austin.id }
+        },
+        appointmentlocationId: constantLocationData.austin.id,
+        appointmentlocationName: constantLocationData.austin.name,
+    },
+    dallas: {
+        location: {
+            "application_name": "Eaglesoft",
+            "$id": constantLocationData.dallas.id,
+            "location": { "$ref": "location", "$id": constantLocationData.dallas.id }
+        },
+        appointmentlocationId: constantLocationData.dallas.id,
+        appointmentlocationName: constantLocationData.dallas.name,
+    },
+    houston: {
+        location: {
+            "application_name": "Eaglesoft",
+            "$id": constantLocationData.houston.id,
+            "location": { "$ref": "location", "$id": constantLocationData.houston.id }
+        },
+        appointmentlocationId: constantLocationData.houston.id,
+        appointmentlocationName: constantLocationData.houston.name,
+    },
+}
+
+To use in appointmentlocation_appientment_patient_true-opto.mock.ts and appointmentlocation_appientment_patient_true-chiro.mock.ts once done with the name change
+*/
