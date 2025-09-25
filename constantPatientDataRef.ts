@@ -273,7 +273,7 @@ export const constantPatientData = {
       mobile: "4693279399"
     }
   },
-  chiropractic: {
+  chiropractor: {
     patient_01_Ally_Vertebrae: {
       id: "01chirop-a123-b456-c789-d101112e1301",
       first_name: "Ally",
