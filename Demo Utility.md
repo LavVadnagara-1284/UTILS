@@ -34,7 +34,7 @@ git push origin stage_demo_vlav
 ```text
 Resolved and Released on stage-demo.
 ```
-```
+```text
 The changes have been implemented to <add task specific comment>.
 This has been released on stage-demo. Please review and let me know if any further adjustments are needed.
 ```
