@@ -1,31 +1,29 @@
-=> Old Demo Creds
+## Old Demo URLs and Creds
 
-## Old Demo URLS: 
+Dental
 ```
 demo.adit.com
 ``` 
 ```
+adit@adit.com
+```
+```
+AditSuperStrong#$2025
+```
+Optometry
+```
 opto.adit.com
 ``` 
 ```
+opto@adit.com
+```
+```
+AditFrontRunners#$2025
+```
+Chiropractor
+```
 chiro.adit.com
 ```
-
-dental
-```
-adit@adit.com
-```
-```
-AditSuperStrong#$2025
-```
-optometry
-```
-opto@adit.com
-```
-```
-AditFrontRunners#$2025
-```
-chiropractor
 ```
 chiro@adit.com
 ```
@@ -33,31 +31,33 @@ chiro@adit.com
 AditGoGetter#$2025
 ```
 
-=> Stage Demo Creds
-Stage Demo: stage - demo.adit.com
-
-dental
+## Stage Demo Creds
+Stage Demo URL: 
+```
+stage-demo.adit.com
+```
+Dental
 ```
 adit@adit.com
 ```
 ```
 AditSuperStrong#$2025
 ```
-optometry
+Optometry
 ```
 opto@adit.com
 ```
 ```
 AditFrontRunners#$2025
 ```
-chiropractor
+Chiropractor
 ```
 chiro@adit.com
 ```
 ```
 AditGoGetter#$2025
 ```
-orthodontics
+Orthodontics
 ```
 ortho@adit.com
 ```
@@ -65,9 +65,11 @@ ortho@adit.com
 AditSuperShine#$2025
 ```
 
-=> Live app for Demo Creds
-Live App: appv2.adit.com
-
+## Live app for Demo Creds
+Live App: 
+```
+appv2.adit.com
+```
 Dental
 ```
 adit@adit.com
