@@ -27,7 +27,8 @@ The changes have been implemented to <add task specific comment>.
 This has been released on stage-demo. Please review and let me know if any further adjustments are needed.
 ```
 ```text
-This is a Stage issue and will be reflected on stage-demo once it is resolved on Stage. You can verify this issue directly on Stage.
+This is a Stage issue and will be reflected on stage-demo once it is resolved on Stage.
+You can verify this issue directly on Stage.
 ```
 ```
 The task links for the changes done are included in the PR descriptions.
