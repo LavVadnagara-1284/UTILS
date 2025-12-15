@@ -29,10 +29,10 @@ The changes have been implemented to <add task-specific comment>.
 This has been released on stage-demo. Please review and let me know if any further adjustments are needed.
 ```
 ```text
-This needs to be fixed on the **Stage** app first. Once it is released on Stage, it will be reflected on **stage-demo** as well. Please assign this task further accordingly.
+This needs to be fixed on the Stage app first. Once it is released on Stage, it will also be reflected in the stage demo. Please assign this task further accordingly.
 ```
 ```text
-This is a Stage issue and will be reflected on stage-demo once it is resolved on Stage.
+This is a Stage issue and will be reflected on the stage demo once it is resolved on Stage.
 You can verify this issue directly on Stage.
 ```
 ```
