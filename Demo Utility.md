@@ -25,8 +25,11 @@ v3plasmademo_1
 Resolved and Released on stage-demo.
 ```
 ```text
-The changes have been implemented to <add task specific comment>.
+The changes have been implemented to <add task-specific comment>.
 This has been released on stage-demo. Please review and let me know if any further adjustments are needed.
+```
+```text
+This needs to be fixed on the **Stage** app first. Once it is released on Stage, it will be reflected on **stage-demo** as well. Please assign this task further accordingly.
 ```
 ```text
 This is a Stage issue and will be reflected on stage-demo once it is resolved on Stage.
