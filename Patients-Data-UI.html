@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Data Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .filter-section {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid white;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            cursor: pointer;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: white;
+            color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .search-box {
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-box input {
+            padding: 12px 20px;
+            width: 100%;
+            max-width: 400px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .patients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .patient-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+            border-left: 4px solid #667eea;
+        }
+
+        .patient-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card-title {
+            flex: 1;
+        }
+
+        .expand-icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+            color: #667eea;
+        }
+
+        .patient-card.expanded .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        .card-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            opacity: 0;
+        }
+
+        .patient-card.expanded .card-content {
+            max-height: 1000px;
+            opacity: 1;
+            margin-top: 15px;
+        }
+
+        .specialty-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .specialty-badge.dental {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .specialty-badge.optometry {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .specialty-badge.chiropractic {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        .patient-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #333;
+            margin: 0;
+        }
+
+        .patient-info {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding-top: 10px;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-left: 3px solid #f0f0f0;
+            background: #fafafa;
+            border-radius: 6px;
+            gap: 8px;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #555;
+            font-size: 0.85rem;
+            min-width: 100px;
+            text-transform: capitalize;
+        }
+
+        .info-value {
+            color: #333;
+            word-break: break-all;
+            flex: 1;
+            text-align: right;
+            font-size: 0.9rem;
+        }
+
+        .info-copy-btn {
+            padding: 5px 10px;
+            background: #f0f0f0;
+            color: #667eea;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+            font-weight: 600;
+        }
+
+        .info-copy-btn:hover {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+            transform: scale(1.05);
+        }
+
+        .copy-all-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .copy-all-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .no-results {
+            text-align: center;
+            color: white;
+            padding: 40px;
+            font-size: 1.2rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #4caf50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            animation: slideIn 0.3s ease;
+            z-index: 1000;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+
+            to {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+        }
+
+        .toast.out {
+            animation: slideOut 0.3s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Patient Data Dashboard</h1>
+            <p>Click on any copy button to copy patient data</p>
+        </div>
+
+        <div class="stats" id="stats"></div>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search patients by name, email, or ID...">
+        </div>
+
+        <div class="filter-section">
+            <button class="filter-btn active" data-filter="all">All Patients</button>
+            <button class="filter-btn" data-filter="dental">Dental</button>
+            <button class="filter-btn" data-filter="optometry">Optometry</button>
+            <button class="filter-btn" data-filter="chiropractic">Chiropractic</button>
+            <button class="filter-btn" data-location="all">All Locations</button>
+            <button class="filter-btn" data-location="austin">Austin</button>
+            <button class="filter-btn" data-location="dallas">Dallas</button>
+            <button class="filter-btn" data-location="houston">Houston</button>
+        </div>
+
+        <div class="patients-grid" id="patientsContainer"></div>
+    </div>
+
+    <script>
+        const patientsData = {
+            dental: {
+                austin: {
+                    patient_06_Miley_Smiley: { id: "06dental-a123-b456-c789-d101112e1306", patient_ehr_id: "6", first_name: "Miley", last_name: "Smiley", display_name: "Miley Smiley", user_name: "miley_smiley", birth_date: new Date("08/16/1985").getTime(), email: "miley.smiley@gmail.com", mobile: "4693279399", practiceIndustryUser: "ABC Family Dentistry", gender: "Female", location_id: "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948", location_name: "Austin" },
+                    patient_08_Annie_Steshia: { id: "08dental-a123-b456-c789-d101112e1308", patient_ehr_id: "8", first_name: "Annie", last_name: "Steshia", display_name: "Annie Steshia", user_name: "annie_steshia", birth_date: new Date("12/31/1983").getTime(), email: "annie.steshia@gmail.com", mobile: "5693279399", practiceIndustryUser: "ABC Family Dentistry", gender: "Female", location_id: "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948", location_name: "Austin" },
+                    patient_09_Sarah_Bellum: { id: "09dental-a123-b456-c789-d101112e1309", patient_ehr_id: "9", first_name: "Sarah", last_name: "Bellum", display_name: "Sarah Bellum", user_name: "sarah_bellum", birth_date: new Date("01/01/1984").getTime(), email: "sarah.bellum@gmail.com", mobile: "2321561581", practiceIndustryUser: "ABC Family Dentistry", gender: "Female", location_id: "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948", location_name: "Austin" },
+                    patient_14_Mandi_Bill: { id: "14dental-a123-b456-c789-d101112e1314", patient_ehr_id: "14", first_name: "Mandi", last_name: "Bill", display_name: "Mandi Bill", user_name: "mandi_bill", birth_date: new Date("08/24/1983").getTime(), email: "mandi.bill@gmail.com", mobile: "4693279391", practiceIndustryUser: "ABC Family Dentistry", gender: "Male", location_id: "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948", location_name: "Austin" }
+                },
+                dallas: {
+                    patient_03_Dan_Ture: { id: "03dental-a123-b456-c789-d101112e1303", patient_ehr_id: "3", first_name: "Dan", last_name: "Ture", display_name: "Dan Ture", user_name: "dan_ture", birth_date: new Date("01/01/1995").getTime(), email: "dan.ture@gmail.com", mobile: "7048204800", practiceIndustryUser: "ABC Family Dentistry", gender: "Male", location_id: "22bffbc8-b255-4679-a5a9-7d2326ec2549", location_name: "Dallas" },
+                    patient_10_Ernest_Flossy: { id: "10dental-a123-b456-c789-d101112e1310", patient_ehr_id: "10", first_name: "Ernest", last_name: "Flossy", display_name: "Ernest Flossy", user_name: "ernest_flossy", birth_date: new Date("12/20/1990").getTime(), email: "ernest.flossy@gmail.com", mobile: "9048204800", practiceIndustryUser: "ABC Family Dentistry", gender: "Male", location_id: "22bffbc8-b255-4679-a5a9-7d2326ec2549", location_name: "Dallas" },
+                    patient_12_Moe_Lars: { id: "12dental-a123-b456-c789-d101112e1312", patient_ehr_id: "12", first_name: "Moe", last_name: "Lars", display_name: "Moe Lars", user_name: "moe_lars", birth_date: new Date("01/01/1994").getTime(), email: "moe.lars@gmail.com", mobile: "9048204808", practiceIndustryUser: "ABC Family Dentistry", gender: "Male", location_id: "22bffbc8-b255-4679-a5a9-7d2326ec2549", location_name: "Dallas" },
+                    patient_15_Ginger_Vitis: { id: "15dental-a123-b456-c789-d101112e1315", patient_ehr_id: "15", first_name: "Ginger", last_name: "Vitis", display_name: "Ginger Vitis", user_name: "ginger_vitis", birth_date: new Date("12/20/1990").getTime(), email: "ginger.vitis@gmail.com", mobile: "8048204803", practiceIndustryUser: "ABC Family Dentistry", gender: "Female", location_id: "22bffbc8-b255-4679-a5a9-7d2326ec2549", location_name: "Dallas" }
+                },
+                houston: {
+                    patient_01_Ruth_Canal: { id: "01dental-a123-b456-c789-d101112e1301", patient_ehr_id: "1", first_name: "Ruth", last_name: "Canal", display_name: "Ruth Canal", user_name: "ruth_canal", birth_date: new Date("11/19/1986").getTime(), email: "ruth.canal@gmail.com", mobile: "7788990987", practiceIndustryUser: "ABC Family Dentistry", gender: "Female", location_id: "869f9155-c174-4f94-b0e1-0ee8d84f3b2d", location_name: "Houston" },
+                    patient_02_Eve_Namel: { id: "02dental-a123-b456-c789-d101112e1302", patient_ehr_id: "2", first_name: "Eve", last_name: "Namel", display_name: "Eve Namel", user_name: "eve_namel", birth_date: new Date("09/14/1986").getTime(), email: "eve.namel@gmail.com", mobile: "7898789090", practiceIndustryUser: "ABC Family Dentistry", gender: "Female", location_id: "869f9155-c174-4f94-b0e1-0ee8d84f3b2d", location_name: "Houston" },
+                    patient_04_Perry_O_Dontist: { id: "04dental-a123-b456-c789-d101112e1304", patient_ehr_id: "4", first_name: "Perry", last_name: "O'Dontist", display_name: "Perry O'Dontist", user_name: "perry_odontist", birth_date: new Date("01/01/1993").getTime(), email: "perry.odontist@gmail.com", mobile: "9234567890", practiceIndustryUser: "ABC Family Dentistry", gender: "Male", location_id: "869f9155-c174-4f94-b0e1-0ee8d84f3b2d", location_name: "Houston" },
+                    patient_05_Pearl_White: { id: "05dental-a123-b456-c789-d101112e1305", patient_ehr_id: "5", first_name: "Pearl", last_name: "White", display_name: "Pearl White", user_name: "pearl_white", birth_date: new Date("01/05/1991").getTime(), email: "pearl.white@gmail.com", mobile: "4534567890", practiceIndustryUser: "ABC Family Dentistry", gender: "Female", location_id: "869f9155-c174-4f94-b0e1-0ee8d84f3b2d", location_name: "Houston" },
+                    patient_07_Ina_Cisor: { id: "07dental-a123-b456-c789-d101112e1307", patient_ehr_id: "7", first_name: "Ina", last_name: "Cisor", display_name: "Ina Cisor", user_name: "ina_cisor", birth_date: new Date("05/27/1988").getTime(), email: "ina.cisor@gmail.com", mobile: "6534567890", practiceIndustryUser: "ABC Family Dentistry", gender: "Female", location_id: "869f9155-c174-4f94-b0e1-0ee8d84f3b2d", location_name: "Houston" },
+                    patient_11_Phil_Ling: { id: "11dental-a123-b456-c789-d101112e1311", patient_ehr_id: "11", first_name: "Phil", last_name: "Ling", display_name: "Phil Ling", user_name: "phil_ling", birth_date: new Date("01/01/1994").getTime(), email: "phil.ling@gmail.com", mobile: "1534567890", practiceIndustryUser: "ABC Family Dentistry", gender: "Male", location_id: "869f9155-c174-4f94-b0e1-0ee8d84f3b2d", location_name: "Houston" },
+                    patient_13_Hal_Itosis: { id: "13dental-a123-b456-c789-d101112e1313", patient_ehr_id: "13", first_name: "Hal", last_name: "Itosis", display_name: "Hal Itosis", user_name: "hal_itosis", birth_date: new Date("12/04/1978").getTime(), email: "hal.itosis@gmail.com", mobile: "7834567890", practiceIndustryUser: "ABC Family Dentistry", gender: "Male", location_id: "869f9155-c174-4f94-b0e1-0ee8d84f3b2d", location_name: "Houston" }
+                }
+            },
+            optometry: {
+                austin: {
+                    patient_15_Seymore_Blurry: { id: "158e6525-opto-b456-c789-d101112e1315", patient_ehr_id: "1115", first_name: "Seymore", last_name: "Blurry", display_name: "Seymore Blurry", user_name: "seymore_blurry", birth_date: new Date("08/11/85").getTime(), email: "seymore.blurry@gmail.com", mobile: "8988776567", practiceIndustryUser: "ABC Vision", gender: "Male", location_id: "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948", location_name: "Austin" },
+                    patient_02_Cee_Vision: { id: "028e6525-opto-b456-c789-d101112e1302", patient_ehr_id: "112", first_name: "Cee", last_name: "Vision", display_name: "Cee Vision", user_name: "cee_vision", birth_date: new Date("08/23/83").getTime(), email: "cee.vision@gmail.com", mobile: "9988776567", practiceIndustryUser: "ABC Vision", gender: "Female", location_id: "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948", location_name: "Austin" },
+                    patient_11_Patricia_Sight: { id: "118e6525-opto-b456-c789-d101112e1311", patient_ehr_id: "1111", first_name: "Patricia", last_name: "Sight", display_name: "Patricia Sight", user_name: "patricia_sight", birth_date: new Date("01/01/84").getTime(), email: "patricia@yahoo.com", mobile: "2345676789", practiceIndustryUser: "ABC Vision", gender: "Female", location_id: "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948", location_name: "Austin" },
+                    patient_10_Ophelia_Bright: { id: "108e6525-opto-b456-c789-d101112e1310", patient_ehr_id: "1110", first_name: "Ophelia", last_name: "Bright", display_name: "Ophelia Bright", user_name: "ophelia_bright", birth_date: new Date("01/01/84").getTime(), email: "ophelia.bright@gmail.com", mobile: "8767776567", practiceIndustryUser: "ABC Vision", gender: "Female", location_id: "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948", location_name: "Austin" }
+                },
+                dallas: {
+                    patient_05_Gail_L_Fogg: { id: "058e6525-opto-b456-c789-d101112e1305", patient_ehr_id: "115", first_name: "Gail L.", last_name: "Fogg", display_name: "Gail L. Fogg", user_name: "gail_l.fogg", birth_date: new Date("01/01/95").getTime(), email: "gail.l.fogg@gmail.com", mobile: "4545676789", practiceIndustryUser: "ABC Vision", gender: "Female", location_id: "22bffbc8-b255-4679-a5a9-7d2326ec2549", location_name: "Dallas" },
+                    patient_08_Iris_Vision: { id: "088e6525-opto-b456-c789-d101112e1308", patient_ehr_id: "118", first_name: "Iris", last_name: "Vision", display_name: "Iris Vision", user_name: "iris_vision", birth_date: new Date("12/19/90").getTime(), email: "iris.vision@gmail.com", mobile: "7745676789", practiceIndustryUser: "ABC Vision", gender: "Female", location_id: "22bffbc8-b255-4679-a5a9-7d2326ec2549", location_name: "Dallas" },
+                    patient_09_Ima_Vision: { id: "098e6525-opto-b456-c789-d101112e1309", patient_ehr_id: "119", first_name: "Ima", last_name: "Vision", display_name: "Ima Vision", user_name: "ima_vision", birth_date: new Date("12/19/90").getTime(), email: "joe@yahoo.com", mobile: "4488776567", practiceIndustryUser: "ABC Vision", gender: "Male", location_id: "22bffbc8-b255-4679-a5a9-7d2326ec2549", location_name: "Dallas" },
+                    patient_12_Paul_Vision: { id: "128e6525-opto-b456-c789-d101112e1312", patient_ehr_id: "1112", first_name: "Paul", last_name: "Vision", display_name: "Paul Vision", user_name: "paul_vision", birth_date: new Date("02/01/78").getTime(), email: "paul.vision@gmail.com", mobile: "6675432345", practiceIndustryUser: "ABC Vision", gender: "Male", location_id: "22bffbc8-b255-4679-a5a9-7d2326ec2549", location_name: "Dallas" }
+                },
+                houston: {
+                    patient_03_Crystal_Clearview: { id: "038e6525-opto-b456-c789-d101112e1303", patient_ehr_id: "1", first_name: "Crystal", last_name: "Clearview", display_name: "Crystal Clearview", user_name: "crystal_clearview", birth_date: new Date("09/11/86").getTime(), email: "crystal.clearview@gmail.com", mobile: "4343556678", practiceIndustryUser: "ABC Vision", gender: "Female", location_id: "869f9155-c174-4f94-b0e1-0ee8d84f3b2d", location_name: "Houston" },
+                    patient_06_Ima_Seewell: { id: "068e6525-opto-b456-c789-d101112e1306", patient_ehr_id: "116", first_name: "Ima", last_name: "Seewell", display_name: "Ima Seewell", user_name: "ima_seewell", birth_date: new Date("12/11/78").getTime(), email: "ima.seewell@gmail.com", mobile: "4475432345", practiceIndustryUser: "ABC Vision", gender: "Female", location_id: "869f9155-c174-4f94-b0e1-0ee8d84f3b2d", location_name: "Houston" },
+                    patient_07_Ima_Squint: { id: "078e6525-opto-b456-c789-d101112e1307", patient_ehr_id: "117", first_name: "Ima", last_name: "Squint", display_name: "Ima Squint", user_name: "ima_squint", birth_date: new Date("09/13/86").getTime(), email: "ima.squint@gmail.com", mobile: "9874455345", practiceIndustryUser: "ABC Vision", gender: "Female", location_id: "869f9155-c174-4f94-b0e1-0ee8d84f3b2d", location_name: "Houston" },
+                    patient_14_Ray_N_Shine: { id: "148e6525-opto-b456-c789-d101112e1314", patient_ehr_id: "1114", first_name: "Ray N.", last_name: "Shine", display_name: "Ray N. Shine", user_name: "ray_n.shine", birth_date: new Date("01/01/93").getTime(), email: "ray.n.shine@gmail.com", mobile: "8874455345", practiceIndustryUser: "ABC Vision", gender: "Male", location_id: "869f9155-c174-4f94-b0e1-0ee8d84f3b2d", location_name: "Houston" },
+                    patient_13_Peyton_L_Specter: { id: "138e6525-opto-b456-c789-d101112e1313", patient_ehr_id: "1113", first_name: "Peyton L.", last_name: "Specter", display_name: "Peyton L. Specter", user_name: "peyton_l.specter", birth_date: new Date("01/01/94").getTime(), email: "peyton.l.specter@gmail.com", mobile: "5564567890", practiceIndustryUser: "ABC Vision", gender: "Male", location_id: "869f9155-c174-4f94-b0e1-0ee8d84f3b2d", location_name: "Houston" },
+                    patient_04_Ellie_O_Vision: { id: "048e6525-opto-b456-c789-d101112e1304", patient_ehr_id: "114", first_name: "Ellie O.", last_name: "Vision", display_name: "Ellie O. Vision", user_name: "ellie_o.vision", birth_date: new Date("05/26/88").getTime(), email: "ellie.o.vision@gmail.com", mobile: "3487909878", practiceIndustryUser: "ABC Vision", gender: "Female", location_id: "869f9155-c174-4f94-b0e1-0ee8d84f3b2d", location_name: "Houston" },
+                    patient_01_Brittney_Vision: { id: "018e6525-opto-b456-c789-d101112e1301", patient_ehr_id: "113", first_name: "Brittney", last_name: "Vision", display_name: "Brittney Vision", user_name: "brittney_vision", birth_date: new Date("01/04/91").getTime(), email: "brittney.vision@gmail.com", mobile: "4543212345", practiceIndustryUser: "ABC Vision", gender: "Female", location_id: "869f9155-c174-4f94-b0e1-0ee8d84f3b2d", location_name: "Houston" }
+                }
+            },
+            chiropractic: {
+                austin: {
+                    patient_06_Flex_Spine: { id: "06chirop-a123-b456-c789-d101112e1306", patient_ehr_id: "226", first_name: "Flex", last_name: "Spine", display_name: "Flex Spine", user_name: "flex_spine", birth_date: new Date("12/11/78").getTime(), email: "flex.spine@gmail.com", mobile: "9878767898", practiceIndustryUser: "ABC Family Chiropractic", gender: "Male", location_id: "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948", location_name: "Austin" },
+                    patient_12_Rhea_Adjust: { id: "12chirop-a123-b456-c789-d101112e1312", patient_ehr_id: "2212", first_name: "Rhea", last_name: "Adjust", display_name: "Rhea Adjust", user_name: "rhea_adjust", birth_date: new Date("10/11/78").getTime(), email: "rhea.adjust@gmail.com", mobile: "7778767898", practiceIndustryUser: "ABC Family Chiropractic", gender: "Male", location_id: "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948", location_name: "Austin" },
+                    patient_11_Paige_Turner: { id: "11chirop-a123-b456-c789-d101112e1311", patient_ehr_id: "2211", first_name: "Paige", last_name: "Turner", display_name: "Paige Turner", user_name: "paige_turner", birth_date: new Date("10/10/78").getTime(), email: "paige.turner@gmail.com", mobile: "4565678909", practiceIndustryUser: "ABC Family Chiropractic", gender: "Male", location_id: "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948", location_name: "Austin" },
+                    patient_13_Rolland_Over: { id: "13chirop-a123-b456-c789-d101112e1313", patient_ehr_id: "2213", first_name: "Rolland", last_name: "Over", display_name: "Rolland Over", user_name: "rolland_over", birth_date: new Date("12/03/78").getTime(), email: "rolland.over@gmail.com", mobile: "3465678909", practiceIndustryUser: "ABC Family Chiropractic", gender: "Male", location_id: "1e0d2d3b-c4ec-48e8-a0f5-fd327f7db948", location_name: "Austin" }
+                },
+                dallas: {
+                    patient_04_Bone_Care: { id: "04chirop-a123-b456-c789-d101112e1304", patient_ehr_id: "224", first_name: "Bone", last_name: "Care", display_name: "Bone Care", user_name: "bone_care", birth_date: new Date("05/11/78").getTime(), email: "bone.care@gmail.com", mobile: "4323456789", practiceIndustryUser: "ABC Family Chiropractic", gender: "Male", location_id: "22bffbc8-b255-4679-a5a9-7d2326ec2549", location_name: "Dallas" },
+                    patient_05_Chiro_Spondylus: { id: "05chirop-a123-b456-c789-d101112e1305", patient_ehr_id: "225", first_name: "Chiro", last_name: "Spondylus", display_name: "Chiro Spondylus", user_name: "chiro_spondylus", birth_date: new Date("12/11/78").getTime(), email: "chiro.spondylus@gmail.com", mobile: "2323456789", practiceIndustryUser: "ABC Family Chiropractic", gender: "Male", location_id: "22bffbc8-b255-4679-a5a9-7d2326ec2549", location_name: "Dallas" },
+                    patient_10_Leslie_Backus: { id: "10chirop-a123-b456-c789-d101112e1310", patient_ehr_id: "2210", first_name: "Leslie", last_name: "Backus", display_name: "Leslie Backus", user_name: "leslie_backus", birth_date: new Date("12/19/90").getTime(), email: "leslie.backus@gmail.com", mobile: "9323456789", practiceIndustryUser: "ABC Family Chiropractic", gender: "Male", location_id: "22bffbc8-b255-4679-a5a9-7d2326ec2549", location_name: "Dallas" },
+                    patient_14_Timberly_Neck: { id: "14chirop-a123-b456-c789-d101112e1314", patient_ehr_id: "2214", first_name: "Timberly", last_name: "Neck", display_name: "Timberly Neck", user_name: "timberly_neck", birth_date: new Date("02/01/78").getTime(), email: "timberly.neck@gmail.com", mobile: "7323456789", practiceIndustryUser: "ABC Family Chiropractic", gender: "Male", location_id: "22bffbc8-b255-4679-a5a9-7d2326ec2549", location_name: "Dallas" }
+                },
+                houston: {
+                    patient_01_Ally_Vertebrae: { id: "01chirop-a123-b456-c789-d101112e1301", patient_ehr_id: "221", first_name: "Ally", last_name: "Vertebrae", display_name: "Ally Vertebrae", user_name: "ally_vertebrae", birth_date: new Date("05/01/80").getTime(), email: "ally.vertebrae@gmail.com", mobile: "4423456789", practiceIndustryUser: "ABC Family Chiropractic", gender: "Female", location_id: "869f9155-c174-4f94-b0e1-0ee8d84f3b2d", location_name: "Houston" },
+                    patient_02_Anita_Crack: { id: "02chirop-a123-b456-c789-d101112e1302", patient_ehr_id: "1", first_name: "Anita", last_name: "Crack", display_name: "Anita Crack", user_name: "anita_crack", birth_date: new Date("07/06/86").getTime(), email: "anita.crack@gmail.com", mobile: "5567223345", practiceIndustryUser: "ABC Family Chiropractic", gender: "Female", location_id: "869f9155-c174-4f94-b0e1-0ee8d84f3b2d", location_name: "Houston" },
+                    patient_03_Bend_E_Back: { id: "03chirop-a123-b456-c789-d101112e1303", patient_ehr_id: "223", first_name: "Bend E.", last_name: "Back", display_name: "Bend E. Back", user_name: "bend_e.back", birth_date: new Date("12/03/78").getTime(), email: "bend.e.back@gmail.com", mobile: "6767223345", practiceIndustryUser: "ABC Family Chiropractic", gender: "Male", location_id: "869f9155-c174-4f94-b0e1-0ee8d84f3b2d", location_name: "Houston" },
+                    patient_15_Tori_Spinal: { id: "15chirop-a123-b456-c789-d101112e1315", patient_ehr_id: "2215", first_name: "Tori", last_name: "Spinal", display_name: "Tori Spinal", user_name: "tori_spinal", birth_date: new Date("07/07/87").getTime(), email: "tori.spinal@gmail.com", mobile: "7767223345", practiceIndustryUser: "ABC Family Chiropractic", gender: "Male", location_id: "869f9155-c174-4f94-b0e1-0ee8d84f3b2d", location_name: "Houston" },
+                    patient_07_Justin_Alignment: { id: "07chirop-a123-b456-c789-d101112e1307", patient_ehr_id: "227", first_name: "Justin", last_name: "Alignment", display_name: "Justin Alignment", user_name: "justin_alignment", birth_date: new Date("01/01/94").getTime(), email: "justin.alignment@gmail.com", mobile: "2267223345", practiceIndustryUser: "ABC Family Chiropractic", gender: "Male", location_id: "869f9155-c174-4f94-b0e1-0ee8d84f3b2d", location_name: "Houston" },
+                    patient_09_Lacey_Bone: { id: "09chirop-a123-b456-c789-d101112e1309", patient_ehr_id: "229", first_name: "Lacey", last_name: "Bone", display_name: "Lacey Bone", user_name: "lacey_bone", birth_date: new Date("05/26/88").getTime(), email: "lacey.bone@gmail.com", mobile: "4556676767", practiceIndustryUser: "ABC Family Chiropractic", gender: "Male", location_id: "869f9155-c174-4f94-b0e1-0ee8d84f3b2d", location_name: "Houston" },
+                    patient_08_Kneeda_Fix: { id: "08chirop-a123-b456-c789-d101112e1308", patient_ehr_id: "228", first_name: "Kneeda", last_name: "Fix", display_name: "Kneeda Fix", user_name: "kneeda_fix", birth_date: new Date("01/04/91").getTime(), email: "kneeda.fix@gmail.com", mobile: "6545454345", practiceIndustryUser: "ABC Family Chiropractic", gender: "Male", location_id: "869f9155-c174-4f94-b0e1-0ee8d84f3b2d", location_name: "Houston" }
+                }
+            }
+        };
+
+        let currentFilter = 'all';
+        let currentLocation = 'all';
+        let currentSearch = '';
+
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            setTimeout(() => {
+                toast.classList.add('out');
+                setTimeout(() => toast.remove(), 300);
+            }, 2000);
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('Copied to clipboard!');
+            }).catch(() => {
+                // Fallback for older browsers
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                showToast('Copied to clipboard!');
+            });
+        }
+
+        function createPatientCard(specialty, key, patient) {
+            const card = document.createElement('div');
+            card.className = 'patient-card';
+
+            const jsonData = JSON.stringify(patient, null, 2);
+            const birthDate = new Date(patient.birth_date).toLocaleDateString();
+
+            let infoHTML = '';
+            const keyOrder = ['id', 'patient_ehr_id', 'first_name', 'last_name', 'display_name', 'user_name', 'birth_date', 'email', 'mobile', 'gender', 'location_id', 'location_name', 'practiceIndustryUser'];
+
+            for (const fieldKey of keyOrder) {
+                if (fieldKey in patient) {
+                    let displayValue = patient[fieldKey];
+                    if (fieldKey === 'birth_date') {
+                        displayValue = birthDate;
+                    }
+                    const copyValue = displayValue.toString().replace(/'/g, "\\'");
+                    infoHTML += `
+                    <div class="info-item">
+                        <span class="info-label">${fieldKey.replace(/_/g, ' ')}:</span>
+                        <span class="info-value">${displayValue}</span>
+                        <button class="info-copy-btn" onclick="event.stopPropagation(); copyToClipboard('${copyValue}')" title="Copy ${fieldKey}">📋</button>
+                    </div>`;
+                }
+            }
+
+            card.innerHTML = `
+                <div class="card-header">
+                    <div class="card-title">
+                        <span class="specialty-badge ${specialty}">${specialty}</span>
+                        <div class="patient-name">${patient.display_name}</div>
+                    </div>
+                    <div class="expand-icon">▼</div>
+                </div>
+                <div class="card-content">
+                    <div class="patient-info">
+                        ${infoHTML}
+                    </div>
+                    <button class="copy-all-btn" onclick="event.stopPropagation(); copyToClipboard('${jsonData.replace(/'/g, "\\'")}')">📋 Copy Full JSON</button>
+                </div>
+            `;
+
+            card.addEventListener('click', () => {
+                card.classList.toggle('expanded');
+            });
+
+            return card;
+        }
+
+        function updatePatients() {
+            const container = document.getElementById('patientsContainer');
+            container.innerHTML = '';
+
+            let patientCount = 0;
+
+            for (const [specialty, locations] of Object.entries(patientsData)) {
+                if (currentFilter !== 'all' && specialty !== currentFilter) continue;
+
+                for (const [location, patients] of Object.entries(locations)) {
+                    if (currentLocation !== 'all' && location !== currentLocation) continue;
+
+                    for (const [key, patient] of Object.entries(patients)) {
+                        const searchLower = currentSearch.toLowerCase();
+                        const matchesSearch = !searchLower ||
+                            patient.display_name.toLowerCase().includes(searchLower) ||
+                            patient.email.toLowerCase().includes(searchLower) ||
+                            patient.id.toLowerCase().includes(searchLower) ||
+                            patient.user_name.toLowerCase().includes(searchLower) ||
+                            patient.mobile.includes(searchLower) ||
+                            patient.location_name.toLowerCase().includes(searchLower);
+
+                        if (matchesSearch) {
+                            container.appendChild(createPatientCard(specialty, key, patient));
+                            patientCount++;
+                        }
+                    }
+                }
+            }
+
+            if (patientCount === 0) {
+                container.innerHTML = '<div class="no-results">No patients found matching your search.</div>';
+            }
+        }
+
+        function updateStats() {
+            const statsContainer = document.getElementById('stats');
+            let dentalCount = 0, optometryCount = 0, chiropracticCount = 0;
+
+            for (const [location, patients] of Object.entries(patientsData.dental)) {
+                dentalCount += Object.keys(patients).length;
+            }
+            for (const [location, patients] of Object.entries(patientsData.optometry)) {
+                optometryCount += Object.keys(patients).length;
+            }
+            for (const [location, patients] of Object.entries(patientsData.chiropractic)) {
+                chiropracticCount += Object.keys(patients).length;
+            }
+
+            const totalPatients = dentalCount + optometryCount + chiropracticCount;
+
+            statsContainer.innerHTML = `
+                <div class="stat-card">
+                    <span class="stat-number">${totalPatients}</span>
+                    <span class="stat-label">Total Patients</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">${dentalCount}</span>
+                    <span class="stat-label">Dental</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">${optometryCount}</span>
+                    <span class="stat-label">Optometry</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">${chiropracticCount}</span>
+                    <span class="stat-label">Chiropractic</span>
+                </div>
+            `;
+        }
+
+        // Event listeners
+        document.querySelectorAll('[data-filter]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('[data-filter]').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                currentFilter = e.target.dataset.filter;
+                updatePatients();
+            });
+        });
+
+        document.querySelectorAll('[data-location]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('[data-location]').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                currentLocation = e.target.dataset.location;
+                updatePatients();
+            });
+        });
+
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            currentSearch = e.target.value;
+            updatePatients();
+        });
+
+        // Initial render
+        updateStats();
+        updatePatients();
+    </script>
+</body>
+
+</html>
