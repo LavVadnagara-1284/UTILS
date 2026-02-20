@@ -1,5 +1,18 @@
 # Git Commands
 ```text
+git push origin stage_demo_vlav
+```
+```text
+git push origin live-demo-vlav
+```
+```text
+git pull origin v3plasmademo_2
+```
+```text
+git pull origin v4plasmademo_1
+```
+# Git Commands Templates
+```text
 git push origin
 ```
 ```text
