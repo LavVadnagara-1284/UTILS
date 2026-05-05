@@ -197,43 +197,6 @@
 
 // ---------------------------------------------------------------------------------------------------------------------------------------
 
-const overdue_0_To_3_ChiroBase = {
-  austin: [],
-  dallas: [],
-  houston: [],
-}
-
-export const getPatientListByTypeNewesOverdue_0_To_3_ChiroMock = {
-  all: {
-    "status": true,
-    "message": "Patient Overdue Listing!",
-    "error": null,
-    "data": [...overdue_0_To_3_ChiroBase.austin, ...overdue_0_To_3_ChiroBase.dallas, ...overdue_0_To_3_ChiroBase.houston],
-    "totalLength": overdue_0_To_3_ChiroBase.austin.length + overdue_0_To_3_ChiroBase.dallas.length + overdue_0_To_3_ChiroBase.houston.length
-  },
-  austin: {
-    "status": true,
-    "message": "Patient Overdue Listing!",
-    "error": null,
-    "data": [...overdue_0_To_3_ChiroBase.austin],
-    "totalLength": overdue_0_To_3_ChiroBase.austin.length
-  },
-  dallas: {
-    "status": true,
-    "message": "Patient Overdue Listing!",
-    "error": null,
-    "data": [...overdue_0_To_3_ChiroBase.dallas],
-    "totalLength": overdue_0_To_3_ChiroBase.dallas.length
-  },
-  houston: {
-    "status": true,
-    "message": "Patient Overdue Listing!",
-    "error": null,
-    "data": [...overdue_0_To_3_ChiroBase.houston],
-    "totalLength": overdue_0_To_3_ChiroBase.houston.length
-  },
-}
-
 /*
 const locationFields = {
     austin: {
@@ -266,4 +229,38 @@ const locationFields = {
 }
 
 To use in appointmentlocation_appientment_patient_true-opto.mock.ts and appointmentlocation_appientment_patient_true-chiro.mock.ts once done with the name change
+*/
+
+/*
+Dallas-Service IDs: {
+    "service_id_24",
+    "service_id_25",
+    "service_id_26",
+    "service_id_27",
+}
+
+Dallas-operatory-ids: {
+    "new-1-6175e09c-267d-4f54-b0c0-cbed0fc3fd41",
+    "new-1-15da922b-ffea-435a-a084-532a61e2be2a",
+    "new-1-94981d8f-af42-4ebd-ba2b-4dc7fbc49e7e",
+    "new-1-09611674-ed3d-4bfc-9518-fa38a1831597",
+}
+
+Dallas-provider-ids: {
+    "6175e09c-267d-4f54-b0c0-cbed0fc3fd41",
+    "09611674-ed3d-4bfc-9518-fa38a1831597",
+    "94981d8f-af42-4ebd-ba2b-4dc7fbc49e7e",
+    "15da922b-ffea-435a-a084-532a61e2be2a",
+}
+*/
+
+/*
+this is for confirmed status
+Request URL: https://betaapi.adit.com/appointmentlocation/location/ehr/setting/37072afa-fc30-446e-8bc1-e00e5fe5d445
+Request Method: GET
+
+this is for arrival status
+Request URL: https://betaapi.adit.com/settings/arrivalstatus/37072afa-fc30-446e-8bc1-e00e5fe5d445
+Request Method: GET
+
 */
